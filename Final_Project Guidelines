@@ -1,0 +1,67 @@
+#The final project will have two parts:
+
+    an analysis (a work of digital history) of the provided digital dataset using at least two or more techniques/tools that you learned in the exercises. This analysis has to be available on the web, with your data and methods fully documented such that someone else could undertake the analysis for themselves.
+    a ‘paradata’ essay (or video, or other digital form) that reflects on your growth as a historian over the term with reference to the analysis in 1.
+
+nb the final project may be submitted at any time up to midnight on the very last day of the course. Since the work will live on the web, you submit by sending me an email with ‘Final Project HIST3814o - submitted’ as the subject. I will make an archival copy of that project the following day. More information on the final project will be provided below.
+
+Detailed instructions for the Final Project may be found here. Your final project will take as its source material some 1500 editions of The Shawville Equity, an English newspaper published in Western Quebec, from 1883 to the present day. Begin thinking now about the kinds of history or the historical questions for which such information might be suitable.
+
+Paradata’ is a description of the ‘how’ and ‘why’ of what you’re doing (see also the ‘when things go wrong’ section on the detailed instructions). A formal discussion of what paradata do from the London Charter:
+
+    Documentation of the evaluative, analytical, deductive, interpretative and creative decisions made in the course of computer-based visualisation should be disseminated in such a way that the relationship between research sources, implicit knowledge, explicit reasoning, and visualisation-based outcomes can be understood.
+
+Your paradata document should have the following sections (as discussed in the London Charter):
+
+    Implementation; Aims and Methods; Research Sources; Documentation; Sustainability; and Access
+
+My strategy here is two-fold. I recognize that sometimes, a project fails to come together. I believe in ‘productive failure’, where we learn from what works and what doesn’t work. I want to explicitly signal to you that it is safe to try something here that might not get to where you want it to go - and that’s ok. 
+
+Your final project is to craft an original work of digital history. That is:
+
+    You will demonstrate via your project, satisfactory competence and understanding of the five modules in this course
+
+The actual form of the project is up to you: but the key element is that the form you select should follow the function. Some kinds of analyses are better suited to the visual stylings of an infographic; others would be best explicated using a kind of long-form mixture of text and visuals; still others might be best represented via an interactive map or a hand-held locative app.
+
+The project will revolve around the hastily-scanned editions of the Shawville Equity held in the Quebec Provincial Archives. The Shawville Equity is a weekly newspaper published in Shawville Quebec. It has published continuously since 1883, when it was first published in the county seat, Bryson.
+
+#3.1 Data/Capta
+
+Johanna Drucker exhorts us to remember that ‘data’ are actually ‘capta’, that is, they are not ‘things given’, but rather ‘things captured’, as it were. (I will use the two terms interchangeably, depending on my mood). With regard to The Equity: **How was this data captured? By what process? To what end? Who paid? Cui bono?**
+
+#3.2 Analysis
+
+You will learn of a number of tools, techniques and approaches to working with capta over the duration of this class. Your project should use at least one of these analytic or exploratory tools in a manner that is suitable given the source data. You will have to think about what the choice of tool does to the kind of story you can tell. **Your analysis must be grounded in the appropriate secondary literature for the period/issue. It is critical that you use your open notebook and your research narrative to document what you are doing and why. This will enable you to write the accompanying paradata document.**
+
+You will share your final project and all ancillary files by keeping them in a repository in your github space; the final project will be mounted in your own domain. You will submit your final work to me by sending me the URL via an email with ‘Final Project HIST3814o - submitted’ as the subject.
+
+#3.3 Visualization
+
+See the tools and techniques in the final two modules of the workbook for inspiration; make sure your visual styling supports the key themes and ideas your research is exploring.
+
+#3.4 Length
+
+In this context, to speak of ‘length’ makes no sense. Page numbers and word counts do not scholarship make. In years past, students have submitted everything from long form graphically enhanced essays, to interactive maps, to videos, to posters. To know if you’re ‘done’, ask yourself:
+
+    Have I stated my key questions/provocations well?
+    Are my arguments grounded in appropriate secondary literature?
+    Have I described my methods well enough that someone else could reproduce them?
+    Have I explored the nature of my data/capta and thought through the implications?
+    Does my argument hang together?
+    Do my visuals support/enhance my argument/story?
+    Do I have all my sources (including data & code) cited? Use Harvard author:date style.
+    Have I documented the paradata?
+
+If the answer is ‘yes’ to all of the above, then you are done.
+
+#3.5 Shortcuts
+
+Many digital projects make their code available on Github. You don’t have to reinvent the wheel: **you merely have to cite it!** So google around ‘digital history project’, and see what people are doing. Keep an eye out for ‘how did they do that’, a tag that will lead you to videos, walkthroughs, and other useful items. Indeed, the ‘how did they do that’ is starting to become a recognized academic genre of writing, see for instance the DHCommons Journal
+
+#3.6 Project Management
+
+Following Appleford, Simon, and Jennifer Guiliano, ‘Best Practice Principles Of Designing Your First Project.’ DevDH.org, 2013, http://devdh.org/lectures/design/bestpractice/, the components of a project are the:
+
+**1. the question, problem, or provocation 2. sources (primary, secondary) 3. analytical activity 4. audience 5. product**
+
+Note that 4, audience, comes before 5, product. You must think of your reader! Yes, in the first instance, I am the most important reader of your work as I am the one in charge of the gradebook. But that is actually a secondary consideration. Given your data, given your analytic approach, who would most likely be interested in your material? If you were trying to produce an infographic about the debates surrounding the BNA of 1867 for high school classroom use, your use of language, graphics, and colour etc could be very different than if you were just trying to convince me.
