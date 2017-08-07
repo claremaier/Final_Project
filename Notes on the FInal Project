@@ -1,6 +1,4 @@
 #Augst 5, 2017
-
-
 #STEP 1: Downloading the Equity files 1887-1902
 -in DH Box, created directory called Final
 -in Final, created directory for Equity Papers, called Equity_Papers_1899
@@ -41,8 +39,40 @@ wget -r --no-parent -w 2 --limit-rate=20k http://collections.banq.qc.ca:8008/jrn
 I tried: wget -r --no-parent -w 2 --limit-rate=20k http://collections.banq.qc.ca:8008/jrn03/equity/src/1897/ -A .txt
 *this finally worked - I am downloading each of the 6 years independently and verifying the files are complete and planted in the correct folders *
 
+#August 6, 2017
+#Step 2: Regex with Python **Attempt 1: Fail**
+-I wanted to clean up the OCR data before I analysed it, so I looked
+at the old exercises and identified TEI. That exercise looked like it
+was for one document.
+I found Regex and saw the link for the [Cleaning OCR'd Text with Regular Expressions](https://programminghistorian.org/lessons/cleaning-ocrd-text-with-regular-expressions)
+I opened a text file and started to work off the python script provided in the tutorial. I changed the names of files, copied and pasted portions and tried to understand it.
+When I pasted it in to the terminal, I received error message after error message.
+They all basically looked like this: 
+clare@clare-fun1:~/School/Final_EquityProject$ python PthyonScript.py
+  File "PthyonScript.py", line 19
+    nodash = re.sub('.(-+)', ',', line)
+         ^
+IndentationError: expected an indented block
 
-#Step 2: 
+My brother explained that indents need to be very precise, so I set about making sure they all lined up properly.
+It still didn't work, so I just copied and pasted the whole script in and changed the file names.
+Somehow terminal was working off a different version of my file PthyonScript.py (I also spelled it wrong) and wouldn't make the changes. 
+When I made sure all the files were in the right place, I ran it again. It correctly filled the csv, but I realised I wanted a txt file. I ran it again and created the changed text in the text file.
+
+When I opened the file, I found that the script had deleted 1700 lines of text, leaving me with 14. 
+
+**What I learned**
+I learned that python scripts are very exact and that I need to be very careful when I build them
+I learned that carefully naming and locating files is key to getting work done quickly and without unnecessary frustration.
+I learned that it is a bad idea to use other people's stuff without understanding it and making sure it works for my project.
+I was reminded of how important it is to make backups (glad that I did). 
+
+**Next steps**
+Carefully examine several sample txt files, noting where I think the most common OCR mistakes are and then use python to carefully write useful regex expressions
+My goal is to clean up the library (not sure if this is possible or if each one needs to be done automaticaly)
+Then I want to do some topic modeling and see whatelse seems useful
+
+*python script is in 1897/01/07*
 
 
 
