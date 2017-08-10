@@ -73,6 +73,7 @@ My goal is to clean up the library (not sure if this is possible or if each one 
 Then I want to do some topic modeling and see whatelse seems useful
 
 *python script is in 1897/01/07*
+<<<<<<< HEAD
 
 #August 7, 2017
 #Step 3: RStudio
@@ -190,6 +191,8 @@ The plan is to create regex expressions tomorrow to fix these new problems so th
 #August 9, 2017
 Using [RegExr](http://regexr.com/) to try out different regex expressions in order to take out "*" and other similar expressions that seem to cause errors when intenting correctly.
 
+=======
+>>>>>>> 7e2636109e7b0e3da0d34b1d6df9c20975be04c3
 
 I first tried "*" to locate the *. It didn't pick it up, so I put in brackets ("*"), but it still didn't work. I recalled the [], so I changed the regex to (["*"]). This worked, although it also picked up the " (quotes) line for some reason.
 I created an expression to ignore the " ["*"])(\"). It didn't work and then I realized I could remove the markings in the gedit program using the find and replace function. 
