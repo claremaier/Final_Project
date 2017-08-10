@@ -1,6 +1,4 @@
 #Augst 5, 2017
-
-
 #STEP 1: Downloading the Equity files 1887-1902
 -in DH Box, created directory called Final
 -in Final, created directory for Equity Papers, called Equity_Papers_1899
@@ -41,17 +39,203 @@ wget -r --no-parent -w 2 --limit-rate=20k http://collections.banq.qc.ca:8008/jrn
 I tried: wget -r --no-parent -w 2 --limit-rate=20k http://collections.banq.qc.ca:8008/jrn03/equity/src/1897/ -A .txt
 *this finally worked - I am downloading each of the 6 years independently and verifying the files are complete and planted in the correct folders *
 
+#August 6, 2017
+#Step 2: Regex with Python **Attempt 1: Fail**
+-I wanted to clean up the OCR data before I analysed it, so I looked
+at the old exercises and identified TEI. That exercise looked like it
+was for one document.
+I found Regex and saw the link for the [Cleaning OCR'd Text with Regular Expressions](https://programminghistorian.org/lessons/cleaning-ocrd-text-with-regular-expressions)
+I opened a text file and started to work off the python script provided in the tutorial. I changed the names of files, copied and pasted portions and tried to understand it.
+When I pasted it in to the terminal, I received error message after error message.
+They all basically looked like this: 
+clare@clare-fun1:~/School/Final_EquityProject$ python PthyonScript.py
+  File "PthyonScript.py", line 19
+    nodash = re.sub('.(-+)', ',', line)
+         ^
+IndentationError: expected an indented block
 
-#Step 2: 
+My brother explained that indents need to be very precise, so I set about making sure they all lined up properly.
+It still didn't work, so I just copied and pasted the whole script in and changed the file names.
+Somehow terminal was working off a different version of my file PthyonScript.py (I also spelled it wrong) and wouldn't make the changes. 
+When I made sure all the files were in the right place, I ran it again. It correctly filled the csv, but I realised I wanted a txt file. I ran it again and created the changed text in the text file.
+
+When I opened the file, I found that the script had deleted 1700 lines of text, leaving me with 14. 
+
+**What I learned**
+I learned that python scripts are very exact and that I need to be very careful when I build them
+I learned that carefully naming and locating files is key to getting work done quickly and without unnecessary frustration.
+I learned that it is a bad idea to use other people's stuff without understanding it and making sure it works for my project.
+I was reminded of how important it is to make backups (glad that I did). 
+
+**Next steps**
+Carefully examine several sample txt files, noting where I think the most common OCR mistakes are and then use python to carefully write useful regex expressions
+My goal is to clean up the library (not sure if this is possible or if each one needs to be done automaticaly)
+Then I want to do some topic modeling and see whatelse seems useful
+
+*python script is in 1897/01/07*
+
+#August 7, 2017
+#Step 3: RStudio
+I attempt to try out the readability with some of the Equity papers.
+Because it was a new DH Box, I had to install rJava and Mallet again.
+
+I ran the following commands, modified from their original [tutorial](http://workbook.craftingdigitalhistory.ca/supporting%20materials/topicmodel-r-dhbox/)
+
+documents <- mallet.read.dir("/home/claremaier/Equity_Papers1897") >
+
+I then tried to run
+topic.model$loadDocuments(mallet.instances), 
+but kept receiving this error: 
+Error in lapply(list(...), ._java_valid_object) : 
+  object 'mallet.instances' not found
+
+I continued having similar errors:
+ documents <- read.csv(text = x, col.names=c("Article_ID", "Newspaper Title", "Newspaper City", "Newspaper Province", "Newspaper Country", "Year", "Month", "Day", "Article Type", "Text", "Keywords"), colClasses=rep("character", 3), sep=",", quote="")
+Error in textConnection(text, encoding = "UTF-8") : object 'x' not found
+> topic.model$loadDocuments(mallet.instances)
+Loading required package: rJava
+Error in topic.model$loadDocuments : 
+  $ operator not defined for this S4 class >
+
+-I got very confused and didn't know exactly what I was doing. They I realized that I wasn't working with a csv file, which it appears that you have to in order for the program to work. I started thinking about making a csv and realized that it needed clear headings. My documents did not have clear headings. I tried to think of clear headings, but realized the data was too messy.
+I went back to my original plan of cleaning the dats, but this time decided to use regex. I could not find what felt like enough consistant errors to justify writing a regex expression.
+
+I looked for other things to work on, because right then I felt pretty overwhelmed and worried. I found the TEI tutorial (which I wasn't able to work through the first time) and noted the Prof's note that doing this with an equity file would be an appropriate file. 
+**the current plan is to use the TEI tutorial to markup an Equity file for searching. I would also like to take it a few steps further, but I'm not sure how right now.**
+*I'm still having trouble understanding the project requirements - re: research and how it should look. The whole thing scares me because I'm having trouble conceptualizing it, so I'm going to just focus on the TEI and documenting it well at this point.* **perhaps open refine could help remove some of the incorrectly spelled, etc text**
+
+#Step 4: TEI
+I am following the tutorial from class, making changes as necessary.
+[Tutorial](http://workbook.craftingdigitalhistory.ca/supporting%20materials/tei/)
+
+I used the [blanktemplate.txt](https://github.com/craftingdigitalhistory/module3-wranglingdata/blob/master/tei-hist3907/blanktemplate.txt) before adding and modifying it.
+
+Between <body> and </body>, I pasted in the 1800 lines of Equity file [83471_1897-01-14.txt](https://github.com/claremaier/Final_Project/blob/master/collections.banq.qc.ca:8008/jrn03/equity/src/1897/01/14/83471_1897-01-14.txt)
+
+I then marked the beginning of every heading and paragraph with <p> and ended each heading or paragraph with </p>.
+
+#Decisions
+I had to make decisions about where to make the paragraph breaks throughout the text. In some cases, it wasn't clear, so I chose to enclose the unreadable text within its own section, so that clear portions continued to be clear. Note: I did not take this approach if the unclear sections were within clear sections.
+Sometimes it is difficult to tell if two topics have been merged by the OCR, so I do my best to group it all together - can manually go through it later
+
+<p>1 hey are <>lltif remarks that the continued absence I Imi*ohtant to Farmer*.L. D. Davis, being held in too school house and ®r, of snow there is likely to prove a a**ri I ^ Shaw ville, has been operating a de* to till a 1«mg fuit want in that di«t our matter to the operations of lumber j horning machine in tins section for some trict. A church will likely be built there men jn that locality.	time P#t with great success. All who
+in the spring.	|	I have had their cattle dehorned are per-
+yean, and 10 month*. Mis remains were ,,f th 0ttawa Hou.ti, win, will conduct
+interred in Norway I$ay cemetery the the Young Hou.eat8.ncl Point n future.</p>
+
+#Observations
+The OCR has mashed different advertisements and ads together, most likely as a result of too many small letters being placed together and getting mistaken as one column of text. 
+Sometimes it is hard to figure out if the abbreviations are a result of the OCR, or if the original newspaper used them to save space.
+Most of the entries are very small - have not yet come across the "large" feature articles we are currently used to
+-there are some, but they are written as town meetings/ elections
+*perhaps this was before "feature articles as we know them*
+
+This is painstaking work - increases admiration for librarians - so many decisions about where to put breaks - same if I tried to fix up the texts later - each decision has potentially huge consequences
+**NO way that just this text can be relied on for any major data mining - it doesn't make much sense**
+
+**It all seems rather subjective actually, and I don't see how I could properly explain every paragraph break I make**
+
+Example: I thought this looked like a list of items on sale, so I separated it from what appears to be prizes for a contest, even though both sections contained indistinguishable characters.
+
+<p>A large, fln«dy-enulpp*d. old established I lut Ion- NON! BETTER IN CANADA.
+Bae-lnf##* Kdueatioo at LowofI PoudMe Graduates always eur#p -ful. Write Š oatnlo.ua W. J. Hl.LlOTT, Prlnolphi
+Wrappers
+Soap
+Samuel Rogers, Pres
+ïxjîTxwiwrï-six ilau».
+DUNNS
+BAKING
+POWDER</p>
+<p>me
+as follows:
+10 First Prizes, $100 Stsarns' Bicycle,! 1,000 26 Sececd " $25 Odd Watch Bleyolee and Watches given each month 1,625
+Total given dur'gyear '97, $19,500
+HOW TO For rules and full particulars, iiv tt Š v eee |hfl Toronto Ôlobb
+ŠŠŠŠŠ</p>
+
+Also base decisions on careful skimming - sometimes have to take context into consideration.
+
+*A lot of in-depth and long medical potion adverts seem to be mixed up - perhaps they were side-by-side with condensed text
+-they are different styles of writing (list, testimony, hyperbole, etc) and refer to different names (Kootenay, KarC Clover Root Tea, Dr. Williams' Medicine, etc)
+
+#August 8, 2017
+#Continued TEI work
+I'm not sure the ethical restrictions on using this data yet because all the stories about land valuation, medical breakthroughs, huge store sales are all intertwingined - does this impact topic modeling?
+This is why people have to be critical and include close reading of their texts - can't just begin with topic modeling
+
+Beginning and end of sentences are good estimates of where page breaks should go, although not everytime. Some lines are started mid-sentence. **Perhaps I can use OpenRefine or something to sort through**
+
+The end section 500 or so lines is written as a fantastical story (I think), so even when it doesn't make much sense, I skim a few lines and if it seems to be the same tone/story, I left it - so it's a big chunk of text
+
+<p>TeacherWhat is that letter? PupilI don't know.
+TeacherWhat is it that maker bon
+Small boy )son of a manufacturer)-G lucoee.</p>
+**I think this is a joke**
+
+It's things like this that make it hard to know how to group them. 
+I finished what I hope was a good job with the <p> and </p>
+
+#Fail-log
+It was suggested that I not worry about trying to ensure everything was indented properly when adding the <p> and </p> features. There is a plugin that will do that automatically. I installed and tried to run the plugin when I was done the initial markup.
+The error indicated that the script couldn't be run because of the extra "<"'s spaced throughout the text because of poor OCR.
+I realized I could use regex to find and replace these extra, useless aspects. With my brother's help, I was able to contruct a regex that found the "less than" symbol and whenever it was connected to a character that wasn't "p" or "/", replace it with the html version. This would allow it to be easily read and solve the problem.
+*the regex looked like this: <([^p\/]), and was replaced by &gt;\1*
+
+To ensure that it didn't accidently replace the wrong thing, I did it one at a time.
+
+Ran the plugin again, but this time the error identified the unicode and other "irregular" markings, such as "&" as problematic. Should have corrected for the "&" sign before changing the "<". Oh well. 
+
+The plan is to create regex expressions tomorrow to fix these new problems so that it can all be indented and move onto the next step.
+
+#August 9, 2017
+Using [RegExr](http://regexr.com/) to try out different regex expressions in order to take out "*" and other similar expressions that seem to cause errors when intenting correctly.
 
 
+I first tried "*" to locate the *. It didn't pick it up, so I put in brackets ("*"), but it still didn't work. I recalled the [], so I changed the regex to (["*"]). This worked, although it also picked up the " (quotes) line for some reason.
+I created an expression to ignore the " ["*"])(\"). It didn't work and then I realized I could remove the markings in the gedit program using the find and replace function. 
+Using the find and replace function I looked up the unicode meaning of the following symbols and replaced "*", "&" with nothing.  With "'",  with """,  with """,  with "'" ,  with """,  with "-",  with nothing because the suggested symbol was a TM and made no sense based on the context.  with nothing because the suggested symbol was a picture of a sword and made absolutely no sense. I made sure to examine each case before replacing it and I found that there was no real option. 
 
+I re-ran the command to automatically align the tags, but it presented me with a lot of errors. I will copy the errors into a separate document and clean them up manually. There are over 300 lines of errors similar to the ones below:
 
+/dev/stdin:97: parser error : StartTag: invalid element name
+established at Haley a Station.</p> <p>1 hey are <>lltif remarks that the contin
+                                                  ^
+/dev/stdin:137: parser error : StartTag: invalid element name
+.	<4l,e, wjH, at request,attend Bllcouri.	lent work. “The best	annual	meeting	
+ 	 ^
+/dev/stdin:147: parser error : Specification mandate value for attribute Physician
+Physician, Surgeon and
+         ^
+/dev/stdin:147: parser error : attributes construct error
+Physician, Surgeon and
+         ^
+/dev/stdin:147: parser error : Couldn't find end of Start Tag J line 146
+Physician, Surgeon and
 
+*The majority of the errors are caused by stray "<" inputted through the OCR process, so I remove those becuase they are not symbols anyway.In the few instances where the word is clearly visible, I replaced the letter*
 
+Happily, it now comes back with far fewer errors than previously. Now, most of the errors read: 
+/dev/stdin:1867: parser error : Premature end of data in tag p line 1541
+/dev/stdin:1867: parser error : Premature end of data in tag p line 1171
+/dev/stdin:1867: parser error : Premature end of data in tag p line 1171
 
+I forgot to type the "/" in the end of the tag </p>, which makes sense because I copied the opening tag and then just manually added the closing tags.
+When I ran it again, it attached them all together. <p></p>. 
+My brother thought it was probably an error with the text editor (gedit) I was using, so he sent it through his own more advanced text editor (Atom) and it intented properly. 
 
+**-ethical ramifications**
+As discussed in class, my decisions to change the original data in any way is problematic because it alters the original text and may have a strong impact on the digital analysis I run on it. For example, when I decided to remove some incorrectly formatted unicode characters that were disrupting the TEI coding, I was doing something fairly straight-forward on the surface. However, those unicode symbols stood for something and I was making a conscious decision to remove some information from the text that I will theoretically be analysing later on. Since it was in unicode, I have no idea what it actually said, and it could have been important or not. I tried to mitigate the damage I did my making clear notes on what I removed/replaced and why. The hope is that this paradata can be used by future students and historians not only to help them understand the steps I took and my thought-process, but to also gain an understanding of the manipulatings and analysis I ran, so that they can decide how it impacts their planned work and adjust accordingly. When it was obvious (eg. i& was a nice day), I actually replaced the character to read correctly (it was a nice day). However, I did this only when I noticed it and only when it made sense. I have not gone through the whole text as this would have added a new layer of researcher subjectivity and bias to the process. In fact, I wonder if I haven't already done this. I hope whatever changes I have made, when taken into consideration the purpose of this project (to clean and make usable data) is a reasonable level of "risk". Ultimately, the goal would be to run this through OpenRefine too and work through it to clean up some of the data. 
 
+#Open Refine
+#Fail-log
+I am going to try to use Open Refine to fix some of the spelling and easy to spot errors before I continue with TEI markup.
+Not sure if it will work, but my thought is that I can improve the quality of the OCR somewhat and then it will be easier to search or to add to a collection of papers for visualisation later.
+
+I converted the text file into a csv and put it into OpenRefine. It did not make any sense what the results were and looking at it, I realized that there were no headings or anything in the text, so it was using the initial <></> as columns. This is not what I wanted and it was not useful information. Now I remember why I didn't use it in the first place (I had this discussion above). 
+Still want to use OpenRefine at some point if possible. Might have to run it through the rest of the TEI first. 
+
+#August 10, 2017
+#TEI continued
 
 
 
