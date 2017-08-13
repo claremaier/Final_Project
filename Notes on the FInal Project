@@ -237,9 +237,103 @@ Not sure if it will work, but my thought is that I can improve the quality of th
 I converted the text file into a csv and put it into OpenRefine. It did not make any sense what the results were and looking at it, I realized that there were no headings or anything in the text, so it was using the initial <></> as columns. This is not what I wanted and it was not useful information. Now I remember why I didn't use it in the first place (I had this discussion above). 
 Still want to use OpenRefine at some point if possible. Might have to run it through the rest of the TEI first. 
 
-#August 10, 2017
-#TEI continued
+#August 11, 2017
+#TEI continued - Encoding/Markup
+Now that the file is indented properly, I will encode it and then people will be able to quickly search it for people's names and such. If combined with many different but similar Equity files that have also been similarly coded, this can be visualized and used for much more useful research.
 
+I used some of the Prof's examples for what to code and I created some that I figured would best suit the text, based on the skimming I did when adding the <p> </p> to separate into paragraphs.
+
+#Fail-log
+I used the formula below to encode the first name (Cation Thornloe), which appears to be a poorly rendered Captain Thornloe). 
+<p> <CationThornloe <key="Thornloe, Cation" from="?" to="?" role="Bishop" ref="none"> </persName>
+I received a parse error saying it was improperly formed.
+I examined the format and noted that there was an extra ">" before the end tag </persName>. Even though it appeared to follow the format laid out in the template, I modified it to close out the tag:
+<p> <CationThornloe/> <key="Thornloe, Cation" from="?" to="?" role="Bishop" ref="none"> </persName>
+It then returned a parse error again, saying it was poorly formed. 
+I asked for help on our class' slack channel and Dr. Graham responded with the following:
+Markup wraps information around text. So <markup>text</markup>
+8:45
+You are missing the text bit. It's telling you exactly where.
+8:46
+Move cation  Thornloe to the space between ><
+8:51
+<p><persName blah blah>Cation Thornloe</persName> was the bishop
+I reformatted the way he suggested and the file opened in Firefox without an error, but it did not include any highlighting or any visible "markup".
+Prof. Graham asked if I had a stylesheet for the xml file. I did not, nor did I know what it was. He explained and provided a sample. To me, it seems like a legend that formats the tags we put in the xml file.
+I'm still confused because the example doesn't seem to match his instructions, so I ask for clarification
+"<?xml version="1.0" encoding="UTF-8"?>
+
+<?xml-stylesheet type="text/xsl" href="000style.xsl"?>
+
+<teiCorpus>
+
+right? line 2, that tells the browser to use the stylesheet 000style.xsl to interpret your markup.
+dr.graham
+9:21 PM
+so just put that stylesheet file in the same folder as your xml file, then try reloading
+claremaier
+9:22 PM
+okay, thanks
+9:26
+there doesn't appear to be "href="000style.xsl"?>
+9:26
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+   <xsl:strip-space elements="*"/>
+   <xsl:output method="html" version="4.0" encoding="UTF-8" indent="yes"/>
+<xsl:template match="/">"
+
+The professor used my file in his browser and it worked, so I was super confused. Then my brother pointed out that the lines should be in the xml file and I mistakenly thought the professor meant the xsl file. Sometimes it is really annoying to get stuck on such a simple mistake for hours. Tomorrow I will try to encode everything I need, or at least get a significant start on it. I'm going to go through each type of code one at a time, because otherwise I'm quite sure I will get confused between what needs to be coded.
+I see this section also includes some research, so that will take up time. Not sure some of the information, such as Grocery sales or specific medicines will be available online, but we'll see. 
+
+I used this style-package
+https://github.com/craftingdigitalhistory/module3-wranglingdata/blob/master/tei-hist3907/000style.xsl
+
+#Encoding Legend
+Persons <persName key="Last, First" from="YYYY" to="YYYY" role="Occupation" ref="http://www.website.com/webpage.html"> </persName>
+
+Places <placeName key="Sheffield, United Kingdom" ref="http://tools.wmflabs.org/geohack/geohack.php?pagename=Sheffield&params=53_23_01_N_1_28_01_W_type:city_region:GB""> </placeName>
+
+Medicine <medicineName key="Name" from="Business" claim="medProperties" ref="website"> </medicineName>
+
+Sale <saleType key="type" from="Business" to="amount"> </saleType>
+
+Meeting <meetingType key="meetingFunction" from="date" to="attendance" subject="subjectMatter" ref="website"> </meetingType>
+
+Key Organizations <orgType key="Name" role="roleoforginOttawa" ref="website"> </orgType>
+
+
+#August 12, 2017
+#Continuing Encoding the TEI - Focus on Names in First 201 lines
+I started by looking up and encoding for the names of people. This required some research using the internet. Sometimes it was easier than other times, based on me having to find alternative ways to spell people's names and try to find historical documents that contain the information I wanted about them. 
+
+For example: Charles M aukk, Esq. on the Board of Directors
+I searched Charles Maukk, didn't find any results that were from the right timeframe and/or referenced him being on the board for anything. I added different search phrases to his name and tried different spellings. I finally found several entries for Charles Magee, President of the Bank of Ottawa during the time the paper was written. I noted the correct spelling and began searching for information on him as a person. I learned that he was a dry goods merchant, rich, president of other prestigious groups. I kept looking for his birthdate and death because as such a prominent figure, I was sure it was out there. *Here is where if I was doing this seriously as part of a larger research project, I would have noted the name for further, primary source research within a library or archives setting*. I did find his information in an online meeting document from the City of Ottawa in 2014 regarding Heritage Buildings. It was about some houses Magee built. *In the process, I learned about the history of the Bank of Ottawa and its merger with the Bank of Nova Scotia, as well as other interesting historical facts. I also can see just how time-consuming this project could be if it was undertaken most professionally*
+
+The information I include in the brief description of the person also needs to be problematized because each person could have at least a full essay written about them, their politics, significance to early Ottawa history, influence at the Bank, trade influence, religious and social views, etc. 
+Each decision about what to include should be explicitly given, although I am not sure where it would be most appropriate to do so or how that type of paradata should be shared. For example, in looking up George Hay, I found one biography for him that seemed to give a rather complete history of his interactions with several different aspects of life. I chose not to look at any addition resources after briefly searching to make sure George Hay was the person I was looking for (context included connection to the Bank of Ottawa, that he was wealthy and influential). I also chose to exclude some of the information about his complex political ties more detailed religious leanings. I did include that he was the leader of the Ottawa Bible Society because it seemed to include his broader position within the religious circles about Ottawa. I also included it because as a person of faith myself, I found myself identifying with him on this level. *While this admission is important for transparency, I do see how my bias could be problematic because it influences how those who use my source learn, interact, further research, and interact with George Hay. However, I do not see a solution, other than to be honest about the processes I took and the decisions I made, because to not do so would be problematic, and as a subjective human, there is no way that the information could be presented in a non-subjective manner. Perhaps this is the danger of digital sources and the type of search function I am writing: people are so used to searching things on Google that they incorrectly assume Google (and every other type of search) is objective. It is not, as even Google recently got fined for preferencing its own products in its search function. Just as we are critical about the value of primary sources, we need to be critical about what we find and how we find online sources. I just don't know the exact most appropriate format or method, but I will try to highlight within this document any decisions I made that seem most significant in creating a bias within the text.*
+
+When I could not be sure that the person whose information I found matched the person in the Equity article, I chose to not include the information. I did this to maintain a level of good scholarship and not present potentially misleading information that future researchers might take at face value. This decision applied to people who were in the paper, but were not necessarily "big players", such as local shopkeepers. If I were to focus on this project as a significant research project, I would have taken the time to go to local registry offices and done cross-referencing between numerous newspaper articles, school registries, church registries, property titles, etc, in order to determine who people are. This would be the next step if someone were going to focus on this newspaper entry as part of a larger effort to create an Equity-wide searchable database. 
+
+**I have spent most of the day looking up information on the people mentioned in the first 200 lines of the Equity article. At this point, it may be a better idea to only look at the first 400 lines and fully encode that, using it as an example of what the completed text would look like.**
+
+*Note: While I did my best to highlight all the names that appeared in the first 201 lines, I may have missed a few - this oversight is entirely mine. I also did my best (by copying) the same tags for the same people, but again, some oversight may have slipped through. This is something people should be aware of when using these sources - it does not absolve people from doing their own critical thinking and fact checking*
+
+#Fail-log
+I just double-checked to make sure my file worked and I received the parsing error again. Turns out the "&" symbol in the URL was throwing it off. Couldn't figure out how to fix it, so I removed it and [replaced](http://www.res.parl.gc.ca/parlinfo/Files/Parliamentarian.aspx?Item=e04a4ab4-fa00-4451-904e-6c261abd68c0&Language=E&Section=ALL) with ParliamentofCanadawebsite, Murray, Thomas. I'm happy to fix it once I figure out how.
+I had the same problem with a GoogleBooks [search](https://books.google.ca/books?id=IZFXAAAAMAAJ&pg=PA248&lpg=PA248&dq=sj+mcnally+ottawa&source=bl&ots=jUoOqXoBYi&sig=55PDw9IKjON8xpqFN8qJmbzDljA&hl=en&sa=X&ved=0ahUKEwi0tMWovdLVAhUL7YMKHbYgBWwQ6AEIPzAF#v=onepage&q=sj%20mcnally%20ottawa&f=false) 
+Canada Medical Record, Volume XXIV, Oct., 1895, to Sept., 1896
+
+When I copied one of the tags near the beginning (to use by quickly modifying), I also grabbed the sentence several times: before it and this was detected as incorrect parsing by my browser. I had to go through and remove this sentence </persName> ex M. P., will grace the Mayor's chair, in the town of Pembroke for the current year. 
+
+**XML Parsing Error:** mismatched tag. Expected: </p>.
+Location: file:///home/clare/School/Final_EquityProject/TEI_OCR_Tagging.xml
+Line Number 829, Column 15:            </body>
+--------------^
+**Not sure why this parsing error. Could be that it doesn't like the new alignment with all the added tags**
+
+#August 13, 2017
+#Continuing Encoding the TEI
 
 
 
