@@ -6,7 +6,7 @@
 *I am going to use the papers from 1897-1902 (6 years) to see if there is an increase of French/English conflict in Canada from  before to after the Second Boer War begins in South Africa and there is a difference of opinion between the two groups about supporting the British troops. This will be especially interesting because without doing any research at this point, I suspect the Shawville Equity as an English paper within Quebec will have an interesting take on the matter.*
 *Perhaps this will not even be in the papers, in which case I will focus on whatever the paper focuses on.*
 
-*I recognize that six years worth of data is not a large sample, but I hope that the change will be great enough to notice over the five years. I also made this decision practically because I do not have unlimited internet and did not want to download a decade's worth of materials*
+*I recognize that six years worth of data is not a large sample, but I hope that the change will be great enough to notice over the six years. I also made this decision practically because I do not have unlimited internet and did not want to download a decade's worth of materials*
 
 #Fail
 -I used the weget command from Module 2, modifying it so it would take the 1897 files. I received the following error:
@@ -99,7 +99,7 @@ Error in topic.model$loadDocuments :
   $ operator not defined for this S4 class >
 
 -I got very confused and didn't know exactly what I was doing. They I realized that I wasn't working with a csv file, which it appears that you have to in order for the program to work. I started thinking about making a csv and realized that it needed clear headings. My documents did not have clear headings. I tried to think of clear headings, but realized the data was too messy.
-I went back to my original plan of cleaning the dats, but this time decided to use regex. I could not find what felt like enough consistant errors to justify writing a regex expression.
+I went back to my original plan of cleaning the data, but this time decided to use regex. I could not find what felt like enough consistant errors to justify writing a regex expression.
 
 I looked for other things to work on, because right then I felt pretty overwhelmed and worried. I found the TEI tutorial (which I wasn't able to work through the first time) and noted the Prof's note that doing this with an equity file would be an appropriate file. 
 **the current plan is to use the TEI tutorial to markup an Equity file for searching. I would also like to take it a few steps further, but I'm not sure how right now.**
@@ -298,11 +298,6 @@ Medicine <medicineName key="Name" from="Business" claim="medProperties" ref="web
 
 Sale <saleType key="type" from="Business" to="amount"> </saleType>
 
-Meeting <meetingType key="meetingFunction" from="date" to="attendance" subject="subjectMatter" ref="website"> </meetingType>
-
-Key Organizations <orgType key="Name" role="roleoforginOttawa" ref="website"> </orgType>
-
-
 #August 12, 2017
 #Continuing Encoding the TEI - Focus on Names in First 201 lines
 I started by looking up and encoding for the names of people. This required some research using the internet. Sometimes it was easier than other times, based on me having to find alternative ways to spell people's names and try to find historical documents that contain the information I wanted about them. 
@@ -335,7 +330,43 @@ Line Number 829, Column 15:            </body>
 #August 13, 2017
 #Continuing Encoding the TEI
 
+#Fail-log
+I was able to fix the two URLs listed above. The xml wouldn't read the "&" symbol, so my brother suggested I replace it with "&amp;" which is essentially the same thing, but is recognized by xml. 
+Similarly, the last parsing error with the mismatched tag was fixed by looking through the file and carefully fixing the few tags that I hadn't closed properly. 
 
+#August 14, 2017
+#Places
+<placeName key="Sheffield, United Kingdom" ref="http://tools.wmflabs.org/geohack/geohack.php?pagename=Sheffield&params=53_23_01_N_1_28_01_W_type:city_region:GB""> </placeName>
+
+This went well. I decided that by places I meant geographical cities and regions and not "Shawville Skating Rink" or businesses. I did this because I did not see the value in encoding such obvious places and others, such as McGuire's Grocery, were not searchable using Google. I may revisit this decision later. 
+
+#Medicine
+Medicine <medicineName key="Name" from="Business" claim="medProperties" ref="website"> </medicineName>
+
+*I have decided to highlight medicines within the text because it seemed to me that I was seeing several different medicine advertisements throughout the paper and I wanted to know how many, and exactly what they promised. This is a personal interest because as a person who watched Little House on the Prairie, I often learned about "phony" medicines that were mostly alcohol. I wanted to explore this further and see if it was widespread/common practice.*
+
+I used the pdf copy of the paper to find all the mentions of newspapers
+
+*I will do the actual research tomorrow at work*
+
+#Sales/Items
+Sale <saleType key="type" from="Business" to="amount"> </saleType>
+
+I am not sure exactly what/how I want to approach this category - I can either do it by store/owner or by type of item. Each has advantages and disadvantages. The advantage of itemized list lets the researcher notice what items are commonly for sale and if crossed with data from several months/years/seasons - did it change? Learn about seasonal fruits and vegetables and if it changed with the advent of further distance transportation or new imports. Is there a difference in the clothes or medicines being sold? I can't do that with this project because I'm focused on one newspaper, but if would be a good future use of this material.
+
+#By Salesman
+
+#Item
+**DO I include the list of medicines here** Discuss
+
+
+#Research Questions
+**How often are well-known people vs. regular people mentioned?**
+**How might this speak to the function or readership of the paper?**
+
+**How frequently are locations mentioned? Does this speak to the relative "world" they lived in? E.g. closer contact with locals - what they were interested in?**
+
+**Are some items sold more than others? What and why?**
 
 
 
