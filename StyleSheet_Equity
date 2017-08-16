@@ -18,7 +18,8 @@
                 <ul>
                     <li style="color:blue;text-decoration:none;">Individual</li>
                     <li style="color:#00CC00;text-decoration:none;">Location</li>
-                    <li style="color:red;text-decoration:none;">Claim</li>
+                    <li style="color:red;text-decoration:none;">Claim</li> 		    <li style="color:orange;text-decoration:none;">Medicine</li>
+
                 </ul>
             </body>
         </html>
@@ -26,6 +27,8 @@
     <xsl:template match="persName">
         <a style="color:blue;text-decoration:none;" href="{@ref}" title="{@key}&#013;({@from}-{@to})&#013;{@role}"><xsl:value-of select="."/></a>
     </xsl:template>
+<xsl:template match="medicineName">
+        <a style="color:orange;text-decoration:none;" href="{@ref}" title="{@key}&#013;({@from}-{@claim})&#013;{@ingredients}"><xsl:value-of select="."/></a>
     <xsl:template match="placeName">
         <a style="color:#00CC00;text-decoration:none;" href="{@ref}" title="{@key}"><xsl:value-of select="."/></a>
     </xsl:template>

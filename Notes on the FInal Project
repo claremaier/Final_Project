@@ -341,7 +341,7 @@ Similarly, the last parsing error with the mismatched tag was fixed by looking t
 This went well. I decided that by places I meant geographical cities and regions and not "Shawville Skating Rink" or businesses. I did this because I did not see the value in encoding such obvious places and others, such as McGuire's Grocery, were not searchable using Google. I may revisit this decision later. 
 
 #Medicine
-Medicine <medicineName key="Name" from="Business" claim="medProperties" ref="website"> </medicineName>
+Medicine <medicineName key="Name" from="maker" claim="medProperties" ref="website"> </medicineName>
 
 *I have decided to highlight medicines within the text because it seemed to me that I was seeing several different medicine advertisements throughout the paper and I wanted to know how many, and exactly what they promised. This is a personal interest because as a person who watched Little House on the Prairie, I often learned about "phony" medicines that were mostly alcohol. I wanted to explore this further and see if it was widespread/common practice.*
 
@@ -350,7 +350,7 @@ I used the pdf copy of the paper to find all the mentions of newspapers
 *I will do the actual research tomorrow at work*
 
 #Sales/Items
-Sale <saleType key="type" from="Business" to="amount"> </saleType>
+Sale <saleType key="type" from="Business"> </saleType>
 
 I am not sure exactly what/how I want to approach this category - I can either do it by store/owner or by type of item. Each has advantages and disadvantages. The advantage of itemized list lets the researcher notice what items are commonly for sale and if crossed with data from several months/years/seasons - did it change? Learn about seasonal fruits and vegetables and if it changed with the advent of further distance transportation or new imports. Is there a difference in the clothes or medicines being sold? I can't do that with this project because I'm focused on one newspaper, but if would be a good future use of this material.
 
@@ -358,6 +358,51 @@ I am not sure exactly what/how I want to approach this category - I can either d
 
 #Item
 **DO I include the list of medicines here** Discuss
+
+#August 15
+#Contiue TEI tagging
+I hope to finish TEI tagging by the end of the day
+*It is possible that I didn't include some medicines if they were not recognisable as medicines or weren't picked up through a manual skimming through the paper.*
+Problem of finding these items by keyword (eg. Hair for Hall's Hair Renewer) is that because the advertisements are often broken up, other references such as scalp, bald, re-growth, etc are not caught. This is the type of thing that the topic modeling would catch and group together to give a more accurate representation of how often Hall's Hair Renewer was mentioned and in what contexts (especially if searching for the topic modeling that uses positive and negative sentiments).
+This is interestingly the case for "Warners safe kidney and liver cure". While "Kidney" is sprinkled throughout the document, it is done without an explicit connection to Warner, so it is unethical and unfair to assign it to his medicine. This is especially true because Doan also has a kidney cure advertised within this edition and without being connected to a specific name, it would be poor methodology to include it. Now, I could pull up the searchable PDF version of this paper that I have on file, but again, this will not necessarily tell me what reference belongs to what medicine. 
+
+It doesn't look like there is anything really to find about the grocers or merchants listed in the paper. This information is not really necessary in for my questions anyway, so I will not do additional research on it. However, because I want to know more about the number of advertisements and who published them, I still will encode for them, but rather than include additional information about them, I will just use <merchant key="name"> </merchant>
+I'm also going to continue to restrict my markup to the first 200 lines. This will ensure consistency and provide a proof of concept. 
+*Using the keyword to search through the document is again problematic because it excludes clearly related text such as "insisting of Dry G-.ods, Furs, Millinery, Carpets, Clothing, Gent's Furnishings, Boots, Shoes, and Groceries,", because it is not connected to a proper name, so it cannot be included. It would be picked up by a topic model however.*
+
+For the items for sale, I will encode the type of product (clothing, meat, dairy, staples, luxuries, hides*) and business selling the item. Hopefully, this will allow for searches and later data mining to determine what type of product was most commonly sold (or rather, advertised) and by whom. This would be interesting to track over a longer period of time - years, decades.
+Sale <saleType key="type" from="Business"> </saleType>
+
+*rationale for chosing these categories: these categories appear to be commonly used to categorize commodities and seem to fit in with the items located within this document.
+Of course, there are ethical and practical considerations when coding for these categories, such as what if the researcher groups things differently? What extent does my worldview, biases, research methods effect the way I grouped things? These categories can't be used universally because of the ways different cultures group food (ex. hot vs cold, hard vs. soft, taboo and clean, etc). These categories would also change depending on the research question being asked. This should be stated up-front. My research question theoretically explores what general types of commodities are being sold at different times of the year and asks if the types of items sold changes over time. In addition, it is important to note that these are not necessarily a fair representation of items sold during Winter of 1897, but a representation of items that stores wished to put on sale for a variety of mostly unknown reasons. Their use would have to be coupled with a more detailed reading and research project. 
+**Note: Once again, I only coded to the first 200 lines, although the terms compiled in the ResearchFinalProject file accurately applies to the whole document**
+There is also the issue of what qualifies as "luxury" vs. "staples", especially regarding sugar. I chose to classify it as a luxury because during that time period, it would have been more of a luxery, rather than today, where it is very much considered a staple. Similarly, coal oil was classified as a staple because it was needed to provide light, especially during the winter, when this paper was published. 
+
+*Line 164 includes a list of food items, but it also appears to be a list of prices, so I made sure not to include it in the sale count. I ensured it was actually a list of prices by checking it against the PDF version of the paper.*
+*Also does not include a list of medicines, although they were also for sale, because medicines are based on their own research question and classified differently*
+
+#Fail-log
+I did all the encoding for Medicine and opened the web browser to make sure it all worked. I did not see anything highlighted. I realized that there must be something in the stylesheet that tells the xml file what colours to make things and to turn it into a link. I opened up the stylesheet and there are two parts that look like they are necessary for this. 
+<li style="color:blue;text-decoration:none;">Individual</li>
+and then later on:
+ <xsl:template match="persName">
+        <a style="color:blue;text-decoration:none;" href="{@ref}" title="{@key}&#013;({@from}-{@to})&#013;{@role}"><xsl:value-of select="."/></a>
+
+I'm going to try experimenting with them and ask my brother for help to substitute what looks like a red tag that I'm not using that is already in the stylesheet I'm using. 
+When I figure this out, I'll also have to add two new colours - Merchant and Sale.
+I tried copying the red "Claim" group of both of these, changing the keywords in them and making them orange. Didn't work.
+<li style="color:orange;text-decoration:none;">Medicine</li>
+
+<xsl:template match="medicineName">
+        <a style="color:orange;text-decoration:none;" href="{@ref}" title="{@key}&#013;({@from}-{@claim})&#013;{@ingredients}"><xsl:value-of select="."/></a>
+
+
+
+
+Medicine <medicineName key="Name" from="Business" claim="medProperties" ref="website"> </medicineName>
+
+Sale <saleType key="type" from="Business" to="amount"> </saleType>
+
 
 
 #Research Questions

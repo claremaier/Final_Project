@@ -239,65 +239,126 @@ Assistant District Attorney
 [link](http://www.hairquackery.com/historical-quackery/halls-hair-renewer.shtml)
 
 #Ayers cathartic pills
-
+-safe, pleasant, reliable family medicine
+-Dr. J. C Ayer & Co, Lowell, Mass
+-extracted and concentrated virtues of purely vegetable substances, and combine the choicest cathartic principles in medicine
+-cure ailments of the stomach, liver, bowels, jaundice, indigestion, headache, dizziness, biliousness
+[link](http://digital.lib.ecu.edu/20944)
 
 #Ayers cherry pectoral
-#Warners soft cure
+-targeted the younger generation – children 
+-cured dreaded childhood afflictions – whooping cough, influenza, consumption, all diseases of the lungs and throat
+-included an opium derivative (was legal)
+[link](http://digital.lib.ecu.edu/20944)
+
+Medicine <medicineName key="Name" from="maker" claim="medProperties" ingredients="keyIngredients" ref="website"> </medicineName>
+
+#Warners safe kidney and liver cure
+Hulbert Harrington Warner – Rochester New York
+Introduced in 1879
+Bright’s disease, jaundice, lame back, impotency, dropsy, liver inflammation, female complaints, debility, and others, malaria
+Contained herbal extracts, alcohol, glycerin, potassium nitrate
+[link](http://www.centerforinquiry.net/blogs/entry/warners_safe_cures/)
+
 #Dr agnews ointment
+-cures piles itching, blind and bleeding
+-cures all itching and irritating skin diseases, chafing, eczema, etc
+-H.J Brown, JJ Goodyear and Co
+[link](http://oldnews.aadl.org/node/151451)
+
 #Dr agnews ctarrhal powder
-#Compound vegetable
-#Miles sanative wash
+-head aches, eye pain, dropping in the throat, smelly breath - catarrh
+-marvellously short time
+-H.J Brown, JJ Goodyear & Co
+[link](http://oldnews.aadl.org/node/151120)
+
 #Shiloh's consumptive cure
+-tuberculosis
+-Schuyler C Wells
+-introduced around 1873
+-heroin
+[link](http://www.centerforinquiry.net/blogs/entry/shilohs_consumption_cure/)
+
 #Karl's clover root tea
-#Dr williams pink tea
+-nervousness, sallow skin, constipated, kidney, bowel trouble
+-clover root tea
+-H.W Crew
+[link](http://www.asylumeclectica.com/garretdom/quackery/dreadfully.htm)
+
+#Dr williams pink pills
+-ferrous sulfate and magnesium sulfate
+-Dr. WIlliamss Medicine Company 
+-chorea, palpitation of the heart, pale and sallow complexions, all forms of weaknesses
+[link](https://en.wikipedia.org/wiki/Dr._Williams%27_Pink_Pills_for_Pale_People)
+
 #Putnams painless corn extractor
+-painless and radical cure - corns, warts and bunions
+Dr Scott Putnam - well-known surgical chiropodist of London, England
+[link](https://news.google.com/newspapers?nid=37&amp;dat=19000709&amp;id=SIAdAAAAIBAJ&amp;sjid=QykDAAAAIBAJ&amp;pg=3546,2480365&amp;hl=en)
+
 #Halls catrah cure
+-Dr Henry S Hall, rights purchased by Frank J Cheney
+[link](http://digging-history.com/2013/11/16/home-remedies-and-quack-cures-halls-catarrh-cure/)
+
 #Rickman's kootenay cure
+(no info)
+
 #Martin's cardinal food
+build up weak consistution gradually but surely
+-highly nutritive preparation for infants, delicate children and invalids
+Kerry Watson & Co
+(https://news.google.com/newspapers?nid=1633&amp;dat=18970311&amp;id=C586AAAAIBAJ&amp;sjid=OyoMAAAAIBAJ&amp;pg=373,15290730&amp;hl=en)
+
 #Doans kidney pills
+-diuretic for the kidneys
+-magnesium salicylate
+-NSAID anti-inflammatory
+-reduces pain, swelling joint stiffness
+[link](https://www.drugs.com/mtm/doans-pills.html)
+
 
 #By Salesman
-McGuire's Grocery
-G. M. Hodgins
-Aexander McDonald's Marble and Granite Works
+#McGuire's Grocery
+#G. M. Hodgins
+#Aexander McDonald's Marble and Granite Works
 
+
+<saleType key="type" from="Business"> </saleType>
+clothing, meat, dairy, staples, luxuries, hides
 
 #Item
-Laundry 
-Beef
-Pork
-Bacon
-Sausage
-Lamb
-Mutton
-Bread
-Hides
-Pelts
-Grain
-Coal Oil
-Sugars
-Teas
-Tobaccos
-All groceries
-Feed (animal)
-Millinery (hats)
-Carpets
-Clothing
-Gent's Furnishings
-Boots
-Shoes
-Dress goods
-Cloakings
-Flannelettes
-Headstones
-Monuments
-Turkeys
-Geese
-Chicken
-Eggs
-Butter
-**DO I include the list of medicines here** Discuss
-
-
+#Laundry 
+#Beef
+#Pork
+#Bacon
+#Sausage
+#Lamb
+#Mutton
+#Bread
+#Hides
+#Pelts
+#Buckwheat
+#Grain
+#Coal Oil
+#Sugars
+#Teas
+#Tobaccos
+#Feed (animal)
+#Millinery (hats)
+#Carpets
+#Clothing
+#Gent's Furnishings
+#Boots
+#Shoes
+#Dress goods
+#Cloakings
+#Flannelettes
+#Headstones
+#Monuments
+#Turkeys
+#Geese
+#Chicken
+#Eggs
+#Butter
 
 
