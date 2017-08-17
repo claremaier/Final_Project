@@ -60,13 +60,17 @@
 
     </xsl:template>
 
-    <xsl:template match="interp">
+    <xsl:template match="medicineName">
 
-        <a style="color:red;text-decoration:none;" title="{@key}&#013;&#013;{@n}, available at {@ref}"><xsl:value-of select="."/></a>
+      	 <a style="color:red;text-decoration:none;" href="{@ref}" title="{@key}&#013; {@from}&#013; {@claim}&#013; {@ingredients},&#013; available at {@ref}"><xsl:value-of select="."/></a>
 
     </xsl:template>
 
-    
+    <xsl:template match="saleType">
 
-</xsl:stylesheet>
+    	<a style="color:808080;text-decoration:none;" href="{@ref}" title="{@key}&#013;"><xsl:value-of select="."/></a>
+
+     </xsl:template>
+     
+     </xsl:stylesheet>
 

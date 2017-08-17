@@ -396,14 +396,20 @@ I tried copying the red "Claim" group of both of these, changing the keywords in
 <xsl:template match="medicineName">
         <a style="color:orange;text-decoration:none;" href="{@ref}" title="{@key}&#013;({@from}-{@claim})&#013;{@ingredients}"><xsl:value-of select="."/></a>
 
-
-
-
 Medicine <medicineName key="Name" from="Business" claim="medProperties" ref="website"> </medicineName>
 
 Sale <saleType key="type" from="Business" to="amount"> </saleType>
 
+#August 16, 2017
+#Fail-log
+I received help from the professor [here](https://hist3814o.slack.com/files/dr.graham/F6P7GSXM1/Untitled.r) and was able to get the "medicine code to turn red throughout the text. 
+However, my brother pointed out that I was missing the "href="{@ref}" to actually link the item to a web page that would open when it was clicked on. I also wasn't able to get the medicine categories all to show up in the "hover" function. I realized that it was because I only included the default variables from the professor, which were "key" and "ref". Then I forgot to add the "@" sign to the beginning of item, further frustrating me until I re-read the document again and noticed the discrepency with the original examples. My brother also talked with my on the phone, guiding me towards areas the mistakes might be in. 
+*This was a good reminder (as I had previously) of the importance in digital reseach of making sure every note, command, and word was spelled correctly. Computers are not like humans and they cannot yet anticipate, infer, or change what we add with accuracy. Of course, the legal and ethical ramifications that would arise if they were able to change what we wrote can speak to issues such as programming bias, transparency, accuracy in making complex, multifaceted decisions, and so on**
+I then had to do something similar for the saleType tags, and I included the href and title. I did not include a reference because I really just wanted to create an easy way to track different categories of food, with the future plan of doing me historial analysis and data counting based on changes in the summar and winter, as well as changing purchasing habits and similar research. 
+**I do not know what the proper way to make this type of data accessible is. I haven't decided if the method I used was correct or not, and tomorrow I will explore a few ways of using the tags to search for ways to answer the research questions below.** 
+I think the biggest thing that was difficult about this last step was that because I had received the stylesheet from the professor, I was using it without truly understading what each component meant or how to modify it. I had no frame of reference and so I was totally confused when it didn't work the first time. I didn't panic and reached out to my professor and brother. Once I understood the different components, I was able to be directed towards a close comparison between the various mistakes I made over different layers of the project and the original versions. This led to my identification of each little error, such as missing the "@" in the variables (eg. {@key}
 
+**Post as blog posts by day, broken up into topics on Reclaim - make sure to mention that I created an ititial document and then decided to post it all on the blogs - and the reasons why**
 
 #Research Questions
 **How often are well-known people vs. regular people mentioned?**
