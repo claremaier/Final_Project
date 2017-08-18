@@ -411,6 +411,61 @@ I think the biggest thing that was difficult about this last step was that becau
 
 **Post as blog posts by day, broken up into topics on Reclaim - make sure to mention that I created an ititial document and then decided to post it all on the blogs - and the reasons why**
 
+#August 17, 2017
+#Next steps - getting it ready for presentation
+I have finished the encoding, so I am going to see what I can do with the data and if I can find the answers to the questions I have posed below. I will also start formatting these notes and put them out there in my blog.
+
+Ideally, I would like to map people's names and compare the frequency of "important" vs "regular" people. I also want to see which towns are mentioned most frequently and what type of food is mentioned most.
+
+#Voyant
+I started with Cirrus, the word cloud display. This will provide a visual representation of what words the program counts as the most frequently included within the text. Unfortunately, the downside is that because of the poorly-done OCR, this word cloud is not entirely accurate and this needs to be mentioned. Failing to mention this could influence the way researchers approach this tool and lead them to draw wrong conclusions. For example, the auto-generated word cloud identified "Mr" as the largest cluster of words. This may indicate that many people are referred to throughout the document in the formal sense, as in "Mr. Ayer". However, it does not provide context in this type of general distant reading. This becomes especially problematic when considering the word "time". Time in what context? By itself, the term is not useful. 
+Either way, the top key words include: Mr, new, old, time, years, house, men, coun, shawville, John, law, business, and January. 
+Taken critically and within the context of a paper written shortly after the start of the new year and largely focusing on recent municipal elections, the results make sense. Elected officials are referred to formally and respectfully. References to "new" include "New" York, "New" Years, new councillors and new buildings/work. Interestingly enough, the name "John" is 7th among the top 25 most frequent words. This means that either the same person is being referred to multiple times, or there are many different people named John. In examining the phrases in which the term occurs, it appears that both are the case. Without doing outside research, it is difficult to know if the name John was popular in the Shawville region during this time, if it was popular among the English-speaking elites, or if some other factor is at play. 
+The term "January" is also in the list of frequent words and speaks heavily to the advertising tactics of G. H. Hodgins. 
+In terms of the words associated with place names, Shawville is the most frequently cited. This makes sense because it is where the paper is written in. I would like to see the frequency of other towns and see if or what their relationship can be deduced as a result. *Not sure how to do this, but I will continue to look into it*
+When I broadened the key word frequency search to 105 terms, it included variations on the words "council/councillor/municipal/elected/mayor". This points to the strong emphasis in the paper on the recent elections in the surrounding townships and also correlates with the frequency of "Mr.". Other strong words inclded words associated with the January sale "prices/goods/company/cent/sale/January". Again, this correlates to the top 25 list and its emphasis. 
+Other terms that came up frequently included general public notices associated with common news "death/coming/home/court". 
+In terms of the tags I encoded for, I was happy to see that names of towns featured in the top 105 list. Bristol was mentioned 14 times, Arnprior 9 times, London 8 times, York (most likely New York) 9 times, and Ottawa 14 times. Closer reading would need to explore in what context these terms where mentioned. It surprised me to see London and (New) York mentioned so highly. On closer examination, it appears many of these references were concentrated in two or three distinct stories about criminal proceedings or internationally significant events.
+
+I clicked on the Links tab (a different tool). It appears to map connections between words based on their frequency. I started playing with the slider in terms of how many words are included in the context, and it took what made sense (a collection of connected but easy to read words) and replaced it with hundreds of words and their connections. 
+
+#Fail-log
+When I moved the slider in Links to 15 from 30, it looked to actually increase the number of words that were being connected. I pressed clear to hopefully reset it to the way it originally was, and it reduced the word to one. I had to re-upload the file and then work on the Links tools. I set it for 15 links, which was in the middle of the options and seemed like a good number. This generated a web of connected words. 
+
+#Links
+This was a different view from the previous visualization because it did not just present the most frequently used words, but searched out how they were connected. This type of visualization is useful in helping the reader or researcher see context and begin to look at alternative ways of broadening a search query. For example, "John" is now connected to "mother". If we continued to trace either John or mother, we could potentially see what John does or why he is mentioned so many times and take a deeper reading to figure out how he connects to mother. Similarly, if our focus was on mother, we could explore how she is related to John and start to ask broader questions. In this case, we could ask why the mother is referred to as John's mother as her identifier, asking questions about identity, gender, power, representation, and the role of newspapers/the printed word in perpetuating or addressing these issues. If we were looking at a huge collection of texts instead of one, we could do like **find the lady's article we read** does on her analysis of feminism and its representation through topic modeling, and do a deeper analysis. 
+Cautions to consider with this type of analysis include the possibility of program errors in connecting of words, and in the case of this data in particular, the concern about poorly OCRd text and missed or unrecognizable words. In order for this chart to be more than merely illustrative, it would have to be used critically and the researcher would have to have taken high levels of care and effort in cleaning up the data for more rigorous scholarly use. 
+
+#Terms and CSV file
+I then explored the Terms tool. This was a list of all the words and their frequencies. I selected all the terms that ocurred eight or more times. I chose this number because it was a number that reflected the lower end of the "frequent" word list and represented 136 individual terms. This number seemed to me to be enough to experiment with, but not too much to get bogged down with. 
+When I exported it as a text separated file (so I could turn it into a csv and use it later), it actually exported all 600 terms. *I may use them all, or I may edit the file down and use only the selection I original decided on.* I opened the file in my LibreOffice Calc program and saved it as a .csv file. Happily, it worked well and provided headings: Term, Count, Trend. The trend category will not be useful for my anticipated project, so in the working copy I save, I will not be including that column. I have also decided to only include the original 136 most frequent words.
+I would like to take this csv file and open it in OpenRefine.
+I loosely followed the [tutorial](http://workbook.craftingdigitalhistory.ca/supporting%20materials/open-refine/) and modified it for what I was looking for.
+
+#Fail-log
+I noticed right away that unlike the Texas correspondance files, they are already sorted into fairly simple and clean categories (key words). There were not really any "Johns" "Johnston" "Johston" to merge and rename. Once again, it doesn't really look like OpenRefine is the right tool for this project, no matter how much I seem to want to use it. 
+
+I tried the "text facet sort" on the file anyway and it found "friend" and "friends". I clicked that it should merge, but on second thought, realized that in the context of this newspaper, it might actually be unethical to do this. Unlike a series of correspondances where the names were almost certainly the same, the key words were not necessarily within the same context. "Friend" might be part of a sentence that said "John went to visit his dear friend last week", whereas "Friends" might refer to people in the more formal and impersonal voice: "at this grocery store, we treat all our customers as friends". I undid the merge and closed the file. Not sure if/how I will use it, but at least I learned how to get it into the format I wanted (finally) and got am learning more about what the program can/can't do.
+*It is also worth noting that I successfully opened Open Refine and accesed the sort function with very little reference to the tutorial. This means I am making some progress, so I'm happy about that.*
+
+Upon closer examination of the class coursebook, it looks like I was confusing to some extent OpenRefine with Gephi. Gephi is the net-work analysis tool and I would like to use it to continue my exploration of words and how they are connected re: the questions I am asking. I may also look briefly at topic modelling to see if the computer program (don't remember which one) makes the same connections between words as the "Links" and my own analysis does. 
+
+#Goals for tomorrow (Friday, August 18, 2017)
+1. Run several visualizations through Gephi in an effort to answer my questions. 
+2. Briefly try some topic modeling
+3. Write up some preliminary conclusions answering the primary questions
+
+#Goals for Saturday, August 19, 2017
+1. Clean up this "Notes" document
+2. Put the blog postings on a website
+3. Finalize presentation of the data
+4. Ensure it meets final project guidelines
+
+
+**DO MORE WITH THE VOYANT DATA**
+
+**In the blog, include appropriate visualizations and code snippets to illustrate the chronological blog posts**
+
 #Research Questions
 **How often are well-known people vs. regular people mentioned?**
 **How might this speak to the function or readership of the paper?**

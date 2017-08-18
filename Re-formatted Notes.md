@@ -1,0 +1,65 @@
+Implementation
+
+
+Aims and Methods
+
+
+Research Sources
+
+
+Documentation
+
+
+Sustainability and Access
+
+
+
+Blog Posts
+Embarking on the Journey
+#August 5th, 2017
+**Narrative**
+Today is the start of my final research project for my digital history class. The assignment is basically to do *something* digital history-like with a subset of the archived Shawville Equity files that have been scanned and made accessible on the internet. 
+
+I am going to use the papers from 1897-1902 (6 years) to see if there is an increase of French/English conflict in Canada from  before and after the Second Boer War began in South Africa. Questions include whether there was a difference of opinion between the French and English about supporting the British troops in the war effort. This will be especially interesting because the Shawville Equity is an English paper within Quebec and will have an interesting take on the matter. I picked 6 years because it seemed like a reasonable spread to gauge public opinion or official reports of the war. I recognize that six years' worth of data is not a large sample, but I hope that the change will be great enough to notice over the six years. I also made this decision practically because I do not have unlimited internet and did not want to download a decade's worth of materials.
+
+**Methods**
+#STEP 1: Downloading the Equity files 1887-1902
+-in DH Box, created directory called Final
+-in Final, created directory for Equity Papers, called Equity_Papers_1899
+-I will put all my Equity papers in this folder
+
+
+**Fail-log**
+I used the weget command from Module 2, modifying it so it would take the 1897 files. I received the following error:
+
+claremaier@3bcf141bb995:~/Final/Equity_Papers_1899$ wget http://collections.banq.qc.ca:8008
+/jrn03/equity/src/1897/ -A .txt -r --no-parent -nd âw 2 --limit-rate=20k
+--2017-08-05 21:57:09--  http://collections.banq.qc.ca:8008/jrn03/equity/src/188397-A
+Resolving collections.banq.qc.ca (collections.banq.qc.ca)... 198.168.27.56
+Connecting to collections.banq.qc.ca (collections.banq.qc.ca)|198.168.27.56|:8008... connec
+ted.
+HTTP request sent, awaiting response... 404 Not Found
+2017-08-05 21:57:09 ERROR 404: Not Found.
+--2017-08-05 21:57:09--  http://.txt/
+Resolving .txt (.txt)... failed: Name or service not known.
+wget: unable to resolve host address '.txt'
+idn_encode failed (1): 'String preparation failed'
+idn_encode failed (1): 'String preparation failed'
+--2017-08-05 21:57:09--  http://%C3%A2%C2%80%C2%93w/
+Resolving â\302\200\302\223w (â\302\200\302\223w)... failed: Name or service not known.
+wget: unable to resolve host address 'â\302\200\302\223w'
+--2017-08-05 21:57:09--  http://2/
+Resolving 2 (2)... 0.0.0.2
+Connecting to 2 (2)|0.0.0.2|:80... failed: Invalid argument.
+
+*I returned to the tutorial to see what I did wrong. It appears that I had to remove to "-A" and somehow I accidently added "âw" instead of just "w".* I replaced that command with:
+wget -r --no-parent -w 2 --limit-rate=20k http://collections.banq.qc.ca:8008/jrn03/equity/src/1897/
+
+It appeared to be working well, but the files were downloading very very slowly and then they opened to the original website location. Not what I wanted, so I cancelled the download and tried again, this time without DH Box, and on my local computer.
+
+I tried: wget -r --no-parent -w 2 --limit-rate=20k http://collections.banq.qc.ca:8008/jrn03/equity/src/1897/ -A .txt
+*this finally worked - I am downloading each of the 6 years independently and verifying the files are complete and planted in the correct folders *
+
+**Re-cap**
+I decided to focus on the South African Boer War and the years preceding and following it. I wanted to know if the historically-documented public sentiment about the conscription issue and the public sentiment divide between supporting and opposing Canadian participation in the Boer War was substantiated through the newspaper articles. I had trouble correctly using wget and downloaded it incorrectly. I used the professor's tutorial and help from the internet to structure my command, diagnose the problem, and create a successful wget command. 
+
