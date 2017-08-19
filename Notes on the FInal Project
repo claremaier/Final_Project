@@ -450,6 +450,27 @@ I tried the "text facet sort" on the file anyway and it found "friend" and "frie
 
 Upon closer examination of the class coursebook, it looks like I was confusing to some extent OpenRefine with Gephi. Gephi is the net-work analysis tool and I would like to use it to continue my exploration of words and how they are connected re: the questions I am asking. I may also look briefly at topic modelling to see if the computer program (don't remember which one) makes the same connections between words as the "Links" and my own analysis does. 
 
+#August 19, 2017
+#Catmandu, regex, python
+Following advice from the professor, I took a look at his advice from [link](https://hist3814o.slack.com/archives/C0GDSE1B8/p1503065858000029) and worked to install Catmandu. This took some time because the file was large and everything downloaded individually. I asked my brother to look at the tutorial with me because I was unfamiliar with the new program. The tutorial is found [here](https://librecatproject.wordpress.com/2014/12/04/day-4-grep-less-and-wc/amp/)
+
+We decided after some exploration that we would prefer to not only count the number of tags each word totaled to, but to sort the place names and determine their relationship to each other. We abandoned Catmandu and began to work with regex and python.
+
+The plan was the create a regex searching for the <placeName> tag, including up to the end of the "ref" line and then use a python expression to tabulate all instances of the same place name. 
+
+I wrote a regex that I thought would do this 
+("<placeName" + ">)
+
+#Fail-log
+I was right about the beginning section of the regex and the later need for the "+" to grab additional information. I was not precise enough and while I remembered some of the conventions about writing the expression, I forgot others, such as the "\" and the strategic use of brackets. 
+My brother modified my expression so that it continued until the "ref" at the end. <placeName key=\"(.+)\" ref "> - inserted to close the tag and prevent the rest of the text from changing colour" This correctly identified the place names, but the "ref" it was picking up was not always the one it started with, especially when the place names occured on the same line **insert screenshot**
+
+We then turned to the python part, looking for ways to isolate each line independently and then add re-occuring place names into a counter. This required the creation of the python file, using "for" to identify the regex phrase to be searched for, "if" means that if it finds more than one for the phrase, it adds it up and creates frequencies. If the place name is mentioned for the first time, it is simply noted. This is referred to as the dictionary.
+He kindly created and sent me this python script: [insert screenshot] 
+It works in theory, but the "key=" causes problems with the script and it will not work. However, this process demonstrated the initial steps of this analysis. When the python does work, the goal would be to learn more about why the **placenames[m.group(1)] = placenames[m.group(1)] + 1** section isn't working properly. 
+Theoretically, if it did, it would search for all place names that were in tags, and tabulate how many times each was mentioned. I would then take the information and place it into context, asking what, if any, the relationship was between a locations's location and Shawville. Other data analysis could also be conducted, similar to what I have discussed previously. The same type of process would also be done for well-known vs. regular people, and items sold at the groceries what, if anything, it woulld have to do with seasonal products. 
+
+**Didn't get to this, discuss as next steps**
 #Goals for tomorrow (Friday, August 18, 2017)
 1. Run several visualizations through Gephi in an effort to answer my questions. 
 2. Briefly try some topic modeling
@@ -462,7 +483,7 @@ Upon closer examination of the class coursebook, it looks like I was confusing t
 4. Ensure it meets final project guidelines
 
 
-**DO MORE WITH THE VOYANT DATA**
+
 
 **In the blog, include appropriate visualizations and code snippets to illustrate the chronological blog posts**
 
