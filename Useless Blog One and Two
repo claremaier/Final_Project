@@ -1,0 +1,77 @@
+Implementation
+
+Today is the start of my final research project for my digital history class. The assignment is basically to do something digital history-like with a subset of the archived Shawville Equity files that have been scanned and made accessible on the internet.
+
+Aims and Methods
+
+I am going to use the papers from 1897-1902 (6 years) to see if there is an increase of French/English conflict in Canada from before and after the Second Boer War began in South Africa. Questions include whether there was a difference of opinion between the French and English about supporting the British troops in the war effort. This will be especially interesting because the Shawville Equity is an English paper within Quebec and will have an interesting take on the matter. I picked 6 years because it seemed like a reasonable spread to gauge public opinion or official reports of the war. I recognize that six years' worth of data is not a large sample, but I hope that the change will be great enough to notice over the six years. I also made this decision practically because I do not have unlimited internet and did not want to download a decade's worth of materials.
+
+
+Research Sources
+
+1897 Equity Papers 
+
+Class exercise
+
+Ian Milligan's tutorial on wget
+
+
+
+Documentation (Fail-log)
+
+#STEP 1: Downloading the Equity files 1887-1902
+-in DH Box, created directory called Final
+-in Final, created directory for Equity Papers, called Equity_Papers_1899
+-I will put all my Equity papers in this folder
+
+I used the weget command from Module 2, modifying it so it would take the 1897 files. I received the following error:
+
+claremaier@3bcf141bb995:~/Final/Equity_Papers_1899$ wget http://collections.banq.qc.ca:8008
+/jrn03/equity/src/1897/ -A .txt -r --no-parent -nd âw 2 --limit-rate=20k
+--2017-08-05 21:57:09-- http://collections.banq.qc.ca:8008/jrn03/equity/src/188397-A
+Resolving collections.banq.qc.ca (collections.banq.qc.ca)... 198.168.27.56
+Connecting to collections.banq.qc.ca (collections.banq.qc.ca)|198.168.27.56|:8008... connec
+ted.
+HTTP request sent, awaiting response... 404 Not Found
+2017-08-05 21:57:09 ERROR 404: Not Found.
+--2017-08-05 21:57:09-- http://.txt/
+Resolving .txt (.txt)... failed: Name or service not known.
+wget: unable to resolve host address '.txt'
+idn_encode failed (1): 'String preparation failed'
+idn_encode failed (1): 'String preparation failed'
+--2017-08-05 21:57:09-- http://%C3%A2%C2%80%C2%93w/
+Resolving â\302\200\302\223w (â\302\200\302\223w)... failed: Name or service not known.
+wget: unable to resolve host address 'â\302\200\302\223w'
+--2017-08-05 21:57:09-- http://2/
+Resolving 2 (2)... 0.0.0.2
+Connecting to 2 (2)|0.0.0.2|:80... failed: Invalid argument.
+
+I returned to the tutorial to see what I did wrong. It appears that I had to remove to "-A" and somehow I accidentally added "âw" instead of just "w".
+
+I replaced that command with:
+wget -r --no-parent -w 2 --limit-rate=20k http://collections.banq.qc.ca:8008/jrn03/equity/src/1897/
+
+It appeared to be working well, but the files were downloading very very slowly and then they opened to the original website location. Not what I wanted, so I cancelled the download and tried again, this time without DH Box, and on my local computer.
+
+I tried: wget -r --no-parent -w 2 --limit-rate=20k http://collections.banq.qc.ca:8008/jrn03/equity/src/1897/ -A .txt
+
+This finally worked - I am downloading each of the 6 years independently and verifying the files are complete and planted in the correct folders
+
+
+
+Sustainability and Access
+
+This was just the very beginning of the process and I uploaded my files to github.
+
+https://github.com/claremaier/Final_Project/commit/ce4bdf053ba9341c84927e115bc6dc629aaf586a
+
+https://github.com/claremaier/Final_Project/commit/168281308dff5c184d70ce2e91b6839a3ab203c7
+
+Equity files http://collections.banq.qc.ca:8008/jrn03/equity/src/1897/
+
+Module 2 http://workbook.craftingdigitalhistory.ca/module-2/Exercises/
+
+Ian Milligan's tutorial https://programminghistorian.org/lessons/automated-downloading-with-wget
+
+
+

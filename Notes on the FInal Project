@@ -72,8 +72,7 @@ Carefully examine several sample txt files, noting where I think the most common
 My goal is to clean up the library (not sure if this is possible or if each one needs to be done automaticaly)
 Then I want to do some topic modeling and see whatelse seems useful
 
-*python script is in 1897/01/07*
-<<<<<<< HEAD
+**python script is in 1897/01/07**
 
 #August 7, 2017
 #Step 3: RStudio
@@ -433,7 +432,7 @@ I clicked on the Links tab (a different tool). It appears to map connections bet
 When I moved the slider in Links to 15 from 30, it looked to actually increase the number of words that were being connected. I pressed clear to hopefully reset it to the way it originally was, and it reduced the word to one. I had to re-upload the file and then work on the Links tools. I set it for 15 links, which was in the middle of the options and seemed like a good number. This generated a web of connected words. 
 
 #Links
-This was a different view from the previous visualization because it did not just present the most frequently used words, but searched out how they were connected. This type of visualization is useful in helping the reader or researcher see context and begin to look at alternative ways of broadening a search query. For example, "John" is now connected to "mother". If we continued to trace either John or mother, we could potentially see what John does or why he is mentioned so many times and take a deeper reading to figure out how he connects to mother. Similarly, if our focus was on mother, we could explore how she is related to John and start to ask broader questions. In this case, we could ask why the mother is referred to as John's mother as her identifier, asking questions about identity, gender, power, representation, and the role of newspapers/the printed word in perpetuating or addressing these issues. If we were looking at a huge collection of texts instead of one, we could do like **find the lady's article we read** does on her analysis of feminism and its representation through topic modeling, and do a deeper analysis. 
+This was a different view from the previous visualization because it did not just present the most frequently used words, but searched out how they were connected. This type of visualization is useful in helping the reader or researcher see context and begin to look at alternative ways of broadening a search query. For example, "John" is now connected to "mother". If we continued to trace either John or mother, we could potentially see what John does or why he is mentioned so many times and take a deeper reading to figure out how he connects to mother. Similarly, if our focus was on mother, we could explore how she is related to John and start to ask broader questions. In this case, we could ask why the mother is referred to as John's mother as her identifier, asking questions about identity, gender, power, representation, and the role of newspapers/the printed word in perpetuating or addressing these issues. If we were looking at a huge collection of texts instead of one, we could do like [Michelle Moravec](http://historyinthecity.blogspot.ca/2013/12/corpus-linguistics-for-historians.html) does on her analysis of feminism and its representation through topic modeling, and do a deeper analysis. 
 Cautions to consider with this type of analysis include the possibility of program errors in connecting of words, and in the case of this data in particular, the concern about poorly OCRd text and missed or unrecognizable words. In order for this chart to be more than merely illustrative, it would have to be used critically and the researcher would have to have taken high levels of care and effort in cleaning up the data for more rigorous scholarly use. 
 
 #Terms and CSV file
@@ -450,7 +449,7 @@ I tried the "text facet sort" on the file anyway and it found "friend" and "frie
 
 Upon closer examination of the class coursebook, it looks like I was confusing to some extent OpenRefine with Gephi. Gephi is the net-work analysis tool and I would like to use it to continue my exploration of words and how they are connected re: the questions I am asking. I may also look briefly at topic modelling to see if the computer program (don't remember which one) makes the same connections between words as the "Links" and my own analysis does. 
 
-#August 19, 2017
+#August 18, 2017
 #Catmandu, regex, python
 Following advice from the professor, I took a look at his advice from [link](https://hist3814o.slack.com/archives/C0GDSE1B8/p1503065858000029) and worked to install Catmandu. This took some time because the file was large and everything downloaded individually. I asked my brother to look at the tutorial with me because I was unfamiliar with the new program. The tutorial is found [here](https://librecatproject.wordpress.com/2014/12/04/day-4-grep-less-and-wc/amp/)
 
@@ -482,7 +481,10 @@ Theoretically, if it did, it would search for all place names that were in tags,
 3. Finalize presentation of the data
 4. Ensure it meets final project guidelines
 
-
+#August 19, 2017
+#Writing blog posts, thinking everything through
+I spent much of the day taking these notes and using them to form blog posts going back to the start of the project. They can be found [here](http://claremaier.ca/final-equity/august-18-a-series-of-errors-and-a-helpful-friend/)
+I did my best to make it user friendly and interesting for the audience, who I envisioned to be students like me (new to digital history) or people from the Shawville area who stumbled across the site somehow through Google. I wrote in a narrative, first person style, describing my motivations, steps, failures, and successes. I also included links that I found helpful and visualisations of the work as appropriate. 
 
 
 **In the blog, include appropriate visualizations and code snippets to illustrate the chronological blog posts**
