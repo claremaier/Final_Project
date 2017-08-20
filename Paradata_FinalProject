@@ -1,5 +1,131 @@
-#Augst 5, 2017
-#STEP 1: Downloading the Equity files 1887-1902
+#Implementation
+I have done my best, through my thought processes and the documentation below, to follow through on the principles set out for digital visualization through the [London Charter](http://www.londoncharter.org/fileadmin/templates/main/docs/london_charter_2_1_en_edits.pdf).
+
+To be honest, this section sounds to me more like a statement that people either agree with or disagree with and which governs the whole of the project. I'm not sure what documentation belongs in this section otherwise. 
+
+For clarification and to aid the understanding of this document, please refer below to the questions which I began with and what I ended with.
+##Beginning Questions
+I am going to use the papers from 1897-1902 (6 years) to see if there is an increase of French/English conflict in Canada from  before to after the Second Boer War begins in South Africa and there is a difference of opinion between the two groups about supporting the British troops. This will be especially interesting because without doing any research at this point, I suspect the Shawville Equity as an English paper within Quebec will have an interesting take on the matter.
+
+##Ending Questions
+How often are well-known people vs. regular people mentioned?
+How might this speak to the function or readership of the paper?
+How frequently are locations mentioned? Does this speak to the relative "world" they lived in? E.g. closer contact with locals - what they were interested in?
+Are some items sold more than others? What and why?
+
+#Aims and Methods
+1. Wget
+I needed to download potentially hundreds of newspapers within a fairly short amount of time. I could have gone to the hosting website and individually downloaded them, but that would have taken a long time and been unnecessary manual labour. 
+I chose to use wget, a command line tool that will pull information off the web based and neatly store it in a folder on your computer. This was useful because it would be semi-automatic, require little external monitoring, and based on the limits and restrictions built into the code, minimally invasive for the hosting website. Its use fits my purposes well and when the download restrictions are correctly applied, there are no limitations. 
+2. Regex with Python
+I wanted to clean up the OCR text files I downloaded and identified regex as a simple way to do that. Regex allows you to type in expressions which the program then searches and uses to identify and make changes from. I also identified python as a programming language which would allow me to write/modify a program to run through the regex with minimal interference. Using these two programs together was appropriate and was suggested by a tutorial, however, I had difficulty understanding it and abandoned it.
+Later on, I did use Regex to clean up simple symbols that the .xml file would not read, such as unicode, "*" and "&". I did not use a python program to do this however, because not all the OCR mistakes took place within the same context and it was important that I maintain the documents authenticity (but not accuracy) by replacing symbols with things that made sense, or at least did not harm the integrity of the paper. 
+I later wanted to use Python to isolate and count the tags generated from the TEI. This was an appropriate use of python because I would have been able to create many regular expressions and then order them in a script for execution. By running the program and searching for the tags, the inforamtion I wanted would have been easily displayed and I could have used it as a basis for the deep reading this project would have done had it followed through. Unfortunately, my brother and I were unable to make the python program do exactly what I wanted it to. 
+3. RStudio
+I tried to use RStudio to begin some topic modelling and data analysis. RStudio is a statistical and programming package that lets you sort, group, and analysis data. It would have been appropriate in conducting the next stage of the research, but it was not appropriate at this point because it needed a .csv file which I did not have at the point. As well, it turned out that the data was too messy to be ethically used for data analysis at this point and its use would have been methodologically questionable because it would not have actually answered the questions I had at that point either.
+4. TEI
+I needed to do a significant amount of work cleaning up the data and making it presentable before I could do any deep work with it. There was the choice of manually going through 1800 lines of text and trying to figure it out, changing words to be spelled correctly, identifying misplaced characters, and removing symbols that the .xml file could not read. I chose to use TEI because it is a universally-accepted markup langauge, has easy-to-follow conventions, and would allow for further work. Specifically, the tagging would allow me to categorize people, places, things, ideas, and events. Crucially, it would do this without significantly altering the text itself, which I was reluctant to do because of the ethical and methodological complications of altering digitally-rendered text and presenting it to the reader/ researcher as unbiased text. TEI would also allow the text to be placed on the web and quickly searched/categorized by others. I found this method of cleanup to be a compromise between "fixing" poorly rendered OCR and maintaining my committment to refrain from modifing the materials as much as possible. This way, I could search the tags for the information I wanted without worrying about spelling mistakes. In addition, the tags allowed me to add additional information on top of the text to aid in comprehension and provide a starting point for future research about any of the major questions I had throughout this project. 
+5. Google's OpenRefine
+OpenRefine is an online tool that allows for simplified data cleanup. Primarily, my intent was to use it to identify words that were spelled or OCRd incorrectly but were most likely the same word. OpenRefine allows for easy regrouping of these types of terms and provides a word count of instances, a feature that would have helped in determining what sales items were sold most frequently and some similar things. Unfortunately, it would have been appropriate to use this tool before any major data cleaning (I ended up using TEI), but I could not use it originally because as a newspaper source it was not well suited for being turned into a .csv file and used for a column-based analysis. When I did have information that was finally within the .csv format and which would have made sense to use OpenRefine on, I had already finished the TEI work and I didn't need any extensive data cleaning anymore. 
+6. Voyant 
+Within Voyant, I used Cirrus, Links, and Terms. These were all slightly different ways of analysing and presenting word count frequencies which I used to do preliminary research on my questions about the form and function of the paper. Voyant was a good choice because it was highly visual and would not only help me distill the paper into "top #" lists, but because it would act as visual aids for the blog posts I was going to write to present the assignment. I also found voyant to be intuitive and easy to use, with a slide rule to increase or decrease the number of terms that were analysed. Significantly, Voyant allowed me to confirm what I had already observed through the close reading of the paper I had done during the encoding phase of the TEI work. It confirmed the new main topics of the newspaper and affirmed that the questions I asked about who was represented most frequently in the paper, or what cities were most important to the people of Shawville, were valid. When I used the Links tool, which allowed me to see the connections between different words, I noticed more nuanced levels of analysis and alerted me to flaws in my initial suppositions and research methodology. For example, I was pleased to notice that John was a common name, but on closer analysis, I realised that there were multiple people named John and it was not possible to clearly use the Links tool to determine which Johns were truly linked to the connections that the tool suggested. Thus, I had to think critically about my approach and modify my assumptions and methodology, as well as present these thoughts in writing for those following along with my blog posts. 
+7. Catmandu
+Catmandu was the program the professor suggested I use to search the tags that were in the .xml file rather than the newspaper text itself. I wanted to do this because the tags allowed me to categorize the people, places, and sale items in the paper. This was vital to my research questions because as much as I was interested in what the paper said, I was interested in how the format and content changed over time. I wanted to know about the relationships between things in the paper and between other aspects of 1897 life in Shawville and surrounding region. Thus, I wanted to know how many cities were local vs international, how many people could be considered wealthy political or business elites vs ordinary residents, and I wanted to know how many of the huge January sale items were seasonal. Ultimately, I wanted to do this comparison over time and see the changes a globalizing world was making on Shawville and the Ottawa region. From what I could see and because it was suggested by the professor for this purpose, I was confident that it was the right program. However, I had difficulty running it and decided to try using python to do something similar. 
+8. Blogging
+I decided to present the findings of my digital history project to date through a series of blog posts. I did this because much of the class reading we did was blogs, and I found that the shorter and more personal nature of the posts was easier to read and more engaging. This is especially true for new digital history work, which I found extremely complicated and difficult to grasp. By breaking the blog posts up so that they usually only covered one day, idea, and new tool, I hoped to make them easier to digest and more engaging. I also found that blog posts allowed for easy insertion of links and media (I used pictures of my findings and screenshots). This increased the potential level of comprehension by providing visuals and reduced the amount of background knowledge I had to provide, because I could include useful links. Finally, the blog format makes the materially freely accessible on the internet and allows the reader to interact with the material and the author through the comment section. These are principles that are integral to the field of digital history and which set it apart from academic history. 
+
+#Research Sources
+**The following is a list of the sources, tutorials, and support I received in completing this project (in order that they appear through the text)** *Please also note that to the best of my knowledge, this list is complete*
+
+##Tutorial and Assistance
+http://workbook.craftingdigitalhistory.ca/
+https://programminghistorian.org/lessons/cleaning-ocrd-text-with-regular-expressions
+http://workbook.craftingdigitalhistory.ca/supporting%20materials/topicmodel-r-dhbox/
+http://workbook.craftingdigitalhistory.ca/supporting%20materials/tei/
+https://github.com/craftingdigitalhistory/module3-wranglingdata/blob/master/tei-hist3907/blanktemplate.txt
+https://github.com/claremaier/Final_Project/blob/master/collections.banq.qc.ca:8008/jrn03/equity/src/1897/01/14/83471_1897-01-14.txt
+http://regexr.com/
+https://github.com/craftingdigitalhistory/module3-wranglingdata/blob/master/tei-hist3907/000style.xsl
+https://hist3814o.slack.com/files/dr.graham/F6P7GSXM1/Untitled.r
+http://historyinthecity.blogspot.ca/2013/12/corpus-linguistics-for-historians.html
+http://workbook.craftingdigitalhistory.ca/supporting%20materials/open-refine/
+https://hist3814o.slack.com/archives/C0GDSE1B8/p1503065858000029
+https://librecatproject.wordpress.com/2014/12/04/day-4-grep-less-and-wc/amp/
+http://www.londoncharter.org/fileadmin/templates/main/docs/london_charter_2_1_en_edits.pdf
+Isaac Maier
+
+##People
+http://ottwatch.ca/meetings/file/264178
+http://www.biographi.ca/en/bio/hay_george_13E.html
+http://www.biographi.ca/en/bio/bryson_george_12E.html
+http://hwtproject.ca/directory/fraser/
+http://www.biographi.ca/en/bio/mather_john_13E.html
+https://www.geni.com/people/David-MacLaren/6000000000407790682
+https://books.google.ca/books?id=IZFXAAAAMAAJ&pg=PA248&lpg=PA248&dq=sj+mcnally+ottawa&source=bl&ots=jUoOqXoBYi&sig=55PDw9IKjON8xpqFN8qJmbzDljA&hl=en&sa=X&ved=0ahUKEwi0tMWovdLVAhUL7YMKHbYgBWwQ6AEIPzAF#v=onepage&q=sj%20mcnally%20ottawa&f=false
+http://www.glengarrycountyarchives.ca/Glengarry_pdf/The-Glengarry-News/1892-1900/1897/Jul/07-30-1897.pdf
+https://gist.github.com/shawngraham/8323899898cf016d5829f68394e63699
+https://gist.github.com/shawngraham/8323899898cf016d5829f68394e63699
+https://gist.github.com/shawngraham/8323899898cf016d5829f68394e63699
+https://gist.github.com/shawngraham/8323899898cf016d5829f68394e63699
+https://gist.github.com/shawngraham/8323899898cf016d5829f68394e63699
+https://www.newspapers.com/newspage/48094345/
+https://www.royal.uk/victoria-r-1837-1901
+https://www.whitehouse.gov/1600/presidents/grovercleveland22
+https://www.newspapers.com/newspage/43432598/
+http://www.biographi.ca/en/bio/hays_charles_melville_14E.html
+
+##Places
+http://town.shawville.qc.ca/web/
+http://www.municipalitepontiac.com/en/
+http://www.pembroke.ca/
+http://arnprior.ca/town/
+http://campbellsbay.ca/
+http://bristolmunicipality.qc.ca/
+http://www.thecanadianencyclopedia.ca/en/article/hull/
+https://www.cityofnorthbay.ca/
+http://www.heritagepontiac.ca/hhf.htm
+http://www.dixville.ca/
+http://www.renfrew.ca/
+https://www.limerick.ie/
+https://en.wikipedia.org/wiki/Nepean,_Ontario
+https://en.wikipedia.org/wiki/Brooklyn
+http://www.ny.gov/
+https://en.wikipedia.org/wiki/Fort-Coulonge
+https://en.wikipedia.org/wiki/L%amp;27%C3%8Ele-du-Grand-Calumet,_Quebec
+https://www.mindat.org/loc-256565.html
+https://www.gov.mb.ca/
+http://www.winnipeg.ca/interhom/
+https://www.newarknj.gov/
+https://www.ci.buffalo.ny.us/
+
+##Medicines
+http://www.hairquackery.com/historical-quackery/halls-hair-renewer.shtml
+http://digital.lib.ecu.edu/20944
+http://digital.lib.ecu.edu/20944
+http://www.centerforinquiry.net/blogs/entry/warners_safe_cures/
+http://oldnews.aadl.org/node/151451
+http://oldnews.aadl.org/node/151120
+http://www.centerforinquiry.net/blogs/entry/shilohs_consumption_cure/
+http://www.asylumeclectica.com/garretdom/quackery/dreadfully.htm
+https://en.wikipedia.org/wiki/Dr._Williams%27_Pink_Pills_for_Pale_People
+https://news.google.com/newspapers?nid=37&amp;dat=19000709&amp;id=SIAdAAAAIBAJ&amp;sjid=QykDAAAAIBAJ&amp;pg=3546,2480365&amp;hl=en
+http://digging-history.com/2013/11/16/home-remedies-and-quack-cures-halls-catarrh-cure/
+https://news.google.com/newspapers?nid=1633&amp;dat=18970311&amp;id=C586AAAAIBAJ&amp;sjid=OyoMAAAAIBAJ&amp;pg=373,15290730&amp;hl=en
+https://www.drugs.com/mtm/doans-pills.html
+
+#Documentation
+**The following documentation is my original research and proccess notes. I consciously structured them in a way that made sense to me, but incorporated the methodological, ethical, and technological challenges I was having with the project as it progressed. For clarity, I will restate the research questions I ultimately ended with at the beginning of this section.**
+
+##Research Questions
+**How often are well-known people vs. regular people mentioned?**
+**How might this speak to the function or readership of the paper?**
+
+**How frequently are locations mentioned? Does this speak to the relative "world" they lived in? E.g. closer contact with locals - what they were interested in?**
+
+**Are some items sold more than others? What and why?**
+
+###Augst 5, 2017
+STEP 1: Downloading the Equity files 1887-1902
 -in DH Box, created directory called Final
 -in Final, created directory for Equity Papers, called Equity_Papers_1899
 -I will put all my Equity papers in this folder
@@ -8,7 +134,7 @@
 
 *I recognize that six years worth of data is not a large sample, but I hope that the change will be great enough to notice over the six years. I also made this decision practically because I do not have unlimited internet and did not want to download a decade's worth of materials*
 
-#Fail
+####Fail
 -I used the weget command from Module 2, modifying it so it would take the 1897 files. I received the following error:
 
 claremaier@3bcf141bb995:~/Final/Equity_Papers_1899$ wget http://collections.banq.qc.ca:8008
@@ -39,8 +165,8 @@ wget -r --no-parent -w 2 --limit-rate=20k http://collections.banq.qc.ca:8008/jrn
 I tried: wget -r --no-parent -w 2 --limit-rate=20k http://collections.banq.qc.ca:8008/jrn03/equity/src/1897/ -A .txt
 *this finally worked - I am downloading each of the 6 years independently and verifying the files are complete and planted in the correct folders *
 
-#August 6, 2017
-#Step 2: Regex with Python **Attempt 1: Fail**
+###August 6, 2017
+Step 2: Regex with Python **Attempt 1: Fail**
 -I wanted to clean up the OCR data before I analysed it, so I looked
 at the old exercises and identified TEI. That exercise looked like it
 was for one document.
@@ -74,8 +200,8 @@ Then I want to do some topic modeling and see whatelse seems useful
 
 **python script is in 1897/01/07**
 
-#August 7, 2017
-#Step 3: RStudio
+###August 7, 2017
+Step 3: RStudio
 I attempt to try out the readability with some of the Equity papers.
 Because it was a new DH Box, I had to install rJava and Mallet again.
 
@@ -104,7 +230,7 @@ I looked for other things to work on, because right then I felt pretty overwhelm
 **the current plan is to use the TEI tutorial to markup an Equity file for searching. I would also like to take it a few steps further, but I'm not sure how right now.**
 *I'm still having trouble understanding the project requirements - re: research and how it should look. The whole thing scares me because I'm having trouble conceptualizing it, so I'm going to just focus on the TEI and documenting it well at this point.* **perhaps open refine could help remove some of the incorrectly spelled, etc text**
 
-#Step 4: TEI
+Step 4: TEI
 I am following the tutorial from class, making changes as necessary.
 [Tutorial](http://workbook.craftingdigitalhistory.ca/supporting%20materials/tei/)
 
@@ -114,7 +240,7 @@ Between <body> and </body>, I pasted in the 1800 lines of Equity file [83471_189
 
 I then marked the beginning of every heading and paragraph with <p> and ended each heading or paragraph with </p>.
 
-#Decisions
+Decisions
 I had to make decisions about where to make the paragraph breaks throughout the text. In some cases, it wasn't clear, so I chose to enclose the unreadable text within its own section, so that clear portions continued to be clear. Note: I did not take this approach if the unclear sections were within clear sections.
 Sometimes it is difficult to tell if two topics have been merged by the OCR, so I do my best to group it all together - can manually go through it later
 
@@ -123,7 +249,7 @@ in the spring.	|	I have had their cattle dehorned are per-
 yean, and 10 month*. Mis remains were ,,f th 0ttawa Hou.ti, win, will conduct
 interred in Norway I$ay cemetery the the Young Hou.eat8.ncl Point n future.</p>
 
-#Observations
+Observations
 The OCR has mashed different advertisements and ads together, most likely as a result of too many small letters being placed together and getting mistaken as one column of text. 
 Sometimes it is hard to figure out if the abbreviations are a result of the OCR, or if the original newspaper used them to save space.
 Most of the entries are very small - have not yet come across the "large" feature articles we are currently used to
@@ -158,8 +284,8 @@ Also base decisions on careful skimming - sometimes have to take context into co
 *A lot of in-depth and long medical potion adverts seem to be mixed up - perhaps they were side-by-side with condensed text
 -they are different styles of writing (list, testimony, hyperbole, etc) and refer to different names (Kootenay, KarC Clover Root Tea, Dr. Williams' Medicine, etc)
 
-#August 8, 2017
-#Continued TEI work
+###August 8, 2017
+Continued TEI work
 I'm not sure the ethical restrictions on using this data yet because all the stories about land valuation, medical breakthroughs, huge store sales are all intertwingined - does this impact topic modeling?
 This is why people have to be critical and include close reading of their texts - can't just begin with topic modeling
 
@@ -175,7 +301,7 @@ Small boy )son of a manufacturer)-G lucoee.</p>
 It's things like this that make it hard to know how to group them. 
 I finished what I hope was a good job with the <p> and </p>
 
-#Fail-log
+####Fail-log
 It was suggested that I not worry about trying to ensure everything was indented properly when adding the <p> and </p> features. There is a plugin that will do that automatically. I installed and tried to run the plugin when I was done the initial markup.
 The error indicated that the script couldn't be run because of the extra "<"'s spaced throughout the text because of poor OCR.
 I realized I could use regex to find and replace these extra, useless aspects. With my brother's help, I was able to contruct a regex that found the "less than" symbol and whenever it was connected to a character that wasn't "p" or "/", replace it with the html version. This would allow it to be easily read and solve the problem.
@@ -187,7 +313,7 @@ Ran the plugin again, but this time the error identified the unicode and other "
 
 The plan is to create regex expressions tomorrow to fix these new problems so that it can all be indented and move onto the next step.
 
-#August 9, 2017
+###August 9, 2017
 Using [RegExr](http://regexr.com/) to try out different regex expressions in order to take out "*" and other similar expressions that seem to cause errors when intenting correctly.
 
 =======
@@ -228,21 +354,21 @@ My brother thought it was probably an error with the text editor (gedit) I was u
 **-ethical ramifications**
 As discussed in class, my decisions to change the original data in any way is problematic because it alters the original text and may have a strong impact on the digital analysis I run on it. For example, when I decided to remove some incorrectly formatted unicode characters that were disrupting the TEI coding, I was doing something fairly straight-forward on the surface. However, those unicode symbols stood for something and I was making a conscious decision to remove some information from the text that I will theoretically be analysing later on. Since it was in unicode, I have no idea what it actually said, and it could have been important or not. I tried to mitigate the damage I did my making clear notes on what I removed/replaced and why. The hope is that this paradata can be used by future students and historians not only to help them understand the steps I took and my thought-process, but to also gain an understanding of the manipulatings and analysis I ran, so that they can decide how it impacts their planned work and adjust accordingly. When it was obvious (eg. i& was a nice day), I actually replaced the character to read correctly (it was a nice day). However, I did this only when I noticed it and only when it made sense. I have not gone through the whole text as this would have added a new layer of researcher subjectivity and bias to the process. In fact, I wonder if I haven't already done this. I hope whatever changes I have made, when taken into consideration the purpose of this project (to clean and make usable data) is a reasonable level of "risk". Ultimately, the goal would be to run this through OpenRefine too and work through it to clean up some of the data. 
 
-#Open Refine
-#Fail-log
+Open Refine
+####Fail-log
 I am going to try to use Open Refine to fix some of the spelling and easy to spot errors before I continue with TEI markup.
 Not sure if it will work, but my thought is that I can improve the quality of the OCR somewhat and then it will be easier to search or to add to a collection of papers for visualisation later.
 
 I converted the text file into a csv and put it into OpenRefine. It did not make any sense what the results were and looking at it, I realized that there were no headings or anything in the text, so it was using the initial <></> as columns. This is not what I wanted and it was not useful information. Now I remember why I didn't use it in the first place (I had this discussion above). 
 Still want to use OpenRefine at some point if possible. Might have to run it through the rest of the TEI first. 
 
-#August 11, 2017
-#TEI continued - Encoding/Markup
+###August 11, 2017
+TEI continued - Encoding/Markup
 Now that the file is indented properly, I will encode it and then people will be able to quickly search it for people's names and such. If combined with many different but similar Equity files that have also been similarly coded, this can be visualized and used for much more useful research.
 
 I used some of the Prof's examples for what to code and I created some that I figured would best suit the text, based on the skimming I did when adding the <p> </p> to separate into paragraphs.
 
-#Fail-log
+####Fail-log
 I used the formula below to encode the first name (Cation Thornloe), which appears to be a poorly rendered Captain Thornloe). 
 <p> <CationThornloe <key="Thornloe, Cation" from="?" to="?" role="Bishop" ref="none"> </persName>
 I received a parse error saying it was improperly formed.
@@ -285,10 +411,10 @@ there doesn't appear to be "href="000style.xsl"?>
 The professor used my file in his browser and it worked, so I was super confused. Then my brother pointed out that the lines should be in the xml file and I mistakenly thought the professor meant the xsl file. Sometimes it is really annoying to get stuck on such a simple mistake for hours. Tomorrow I will try to encode everything I need, or at least get a significant start on it. I'm going to go through each type of code one at a time, because otherwise I'm quite sure I will get confused between what needs to be coded.
 I see this section also includes some research, so that will take up time. Not sure some of the information, such as Grocery sales or specific medicines will be available online, but we'll see. 
 
-I used this [style-package]
-(https://github.com/craftingdigitalhistory/module3-wranglingdata/blob/master/tei-hist3907/000style.xsl)
+I used this style-package
+https://github.com/craftingdigitalhistory/module3-wranglingdata/blob/master/tei-hist3907/000style.xsl
 
-#Encoding Legend
+**Encoding Legend**
 Persons <persName key="Last, First" from="YYYY" to="YYYY" role="Occupation" ref="http://www.website.com/webpage.html"> </persName>
 
 Places <placeName key="Sheffield, United Kingdom" ref="http://tools.wmflabs.org/geohack/geohack.php?pagename=Sheffield&params=53_23_01_N_1_28_01_W_type:city_region:GB""> </placeName>
@@ -297,8 +423,8 @@ Medicine <medicineName key="Name" from="Business" claim="medProperties" ref="web
 
 Sale <saleType key="type" from="Business" to="amount"> </saleType>
 
-#August 12, 2017
-#Continuing Encoding the TEI - Focus on Names in First 201 lines
+###August 12, 2017
+Continuing Encoding the TEI - Focus on Names in First 201 lines
 I started by looking up and encoding for the names of people. This required some research using the internet. Sometimes it was easier than other times, based on me having to find alternative ways to spell people's names and try to find historical documents that contain the information I wanted about them. 
 
 For example: Charles M aukk, Esq. on the Board of Directors
@@ -313,7 +439,7 @@ When I could not be sure that the person whose information I found matched the p
 
 *Note: While I did my best to highlight all the names that appeared in the first 201 lines, I may have missed a few - this oversight is entirely mine. I also did my best (by copying) the same tags for the same people, but again, some oversight may have slipped through. This is something people should be aware of when using these sources - it does not absolve people from doing their own critical thinking and fact checking*
 
-#Fail-log
+####Fail-log
 I just double-checked to make sure my file worked and I received the parsing error again. Turns out the "&" symbol in the URL was throwing it off. Couldn't figure out how to fix it, so I removed it and [replaced](http://www.res.parl.gc.ca/parlinfo/Files/Parliamentarian.aspx?Item=e04a4ab4-fa00-4451-904e-6c261abd68c0&Language=E&Section=ALL) with ParliamentofCanadawebsite, Murray, Thomas. I'm happy to fix it once I figure out how.
 I had the same problem with a GoogleBooks [search](https://books.google.ca/books?id=IZFXAAAAMAAJ&pg=PA248&lpg=PA248&dq=sj+mcnally+ottawa&source=bl&ots=jUoOqXoBYi&sig=55PDw9IKjON8xpqFN8qJmbzDljA&hl=en&sa=X&ved=0ahUKEwi0tMWovdLVAhUL7YMKHbYgBWwQ6AEIPzAF#v=onepage&q=sj%20mcnally%20ottawa&f=false) 
 Canada Medical Record, Volume XXIV, Oct., 1895, to Sept., 1896
@@ -326,20 +452,20 @@ Line Number 829, Column 15:            </body>
 --------------^
 **Not sure why this parsing error. Could be that it doesn't like the new alignment with all the added tags**
 
-#August 13, 2017
-#Continuing Encoding the TEI
+###August 13, 2017
+Continuing Encoding the TEI
 
-#Fail-log
+####Fail-log
 I was able to fix the two URLs listed above. The xml wouldn't read the "&" symbol, so my brother suggested I replace it with "&amp;" which is essentially the same thing, but is recognized by xml. 
 Similarly, the last parsing error with the mismatched tag was fixed by looking through the file and carefully fixing the few tags that I hadn't closed properly. 
 
-#August 14, 2017
-#Places
+###August 14, 2017
+**Places**
 <placeName key="Sheffield, United Kingdom" ref="http://tools.wmflabs.org/geohack/geohack.php?pagename=Sheffield&params=53_23_01_N_1_28_01_W_type:city_region:GB""> </placeName>
 
 This went well. I decided that by places I meant geographical cities and regions and not "Shawville Skating Rink" or businesses. I did this because I did not see the value in encoding such obvious places and others, such as McGuire's Grocery, were not searchable using Google. I may revisit this decision later. 
 
-#Medicine
+**Medicine**
 Medicine <medicineName key="Name" from="maker" claim="medProperties" ref="website"> </medicineName>
 
 *I have decided to highlight medicines within the text because it seemed to me that I was seeing several different medicine advertisements throughout the paper and I wanted to know how many, and exactly what they promised. This is a personal interest because as a person who watched Little House on the Prairie, I often learned about "phony" medicines that were mostly alcohol. I wanted to explore this further and see if it was widespread/common practice.*
@@ -348,18 +474,17 @@ I used the pdf copy of the paper to find all the mentions of newspapers
 
 *I will do the actual research tomorrow at work*
 
-#Sales/Items
+**Sales/Items**
 Sale <saleType key="type" from="Business"> </saleType>
 
 I am not sure exactly what/how I want to approach this category - I can either do it by store/owner or by type of item. Each has advantages and disadvantages. The advantage of itemized list lets the researcher notice what items are commonly for sale and if crossed with data from several months/years/seasons - did it change? Learn about seasonal fruits and vegetables and if it changed with the advent of further distance transportation or new imports. Is there a difference in the clothes or medicines being sold? I can't do that with this project because I'm focused on one newspaper, but if would be a good future use of this material.
 
-#By Salesman
+**By Salesman**
 
-#Item
-**DO I include the list of medicines here** Discuss
+**Item**
 
-#August 15
-#Contiue TEI tagging
+###August 15
+Contiue TEI tagging
 I hope to finish TEI tagging by the end of the day
 *It is possible that I didn't include some medicines if they were not recognisable as medicines or weren't picked up through a manual skimming through the paper.*
 Problem of finding these items by keyword (eg. Hair for Hall's Hair Renewer) is that because the advertisements are often broken up, other references such as scalp, bald, re-growth, etc are not caught. This is the type of thing that the topic modeling would catch and group together to give a more accurate representation of how often Hall's Hair Renewer was mentioned and in what contexts (especially if searching for the topic modeling that uses positive and negative sentiments).
@@ -380,7 +505,7 @@ There is also the issue of what qualifies as "luxury" vs. "staples", especially 
 *Line 164 includes a list of food items, but it also appears to be a list of prices, so I made sure not to include it in the sale count. I ensured it was actually a list of prices by checking it against the PDF version of the paper.*
 *Also does not include a list of medicines, although they were also for sale, because medicines are based on their own research question and classified differently*
 
-#Fail-log
+####Fail-log
 I did all the encoding for Medicine and opened the web browser to make sure it all worked. I did not see anything highlighted. I realized that there must be something in the stylesheet that tells the xml file what colours to make things and to turn it into a link. I opened up the stylesheet and there are two parts that look like they are necessary for this. 
 <li style="color:blue;text-decoration:none;">Individual</li>
 and then later on:
@@ -399,8 +524,8 @@ Medicine <medicineName key="Name" from="Business" claim="medProperties" ref="web
 
 Sale <saleType key="type" from="Business" to="amount"> </saleType>
 
-#August 16, 2017
-#Fail-log
+###August 16, 2017
+####Fail-log
 I received help from the professor [here](https://hist3814o.slack.com/files/dr.graham/F6P7GSXM1/Untitled.r) and was able to get the "medicine code to turn red throughout the text. 
 However, my brother pointed out that I was missing the "href="{@ref}" to actually link the item to a web page that would open when it was clicked on. I also wasn't able to get the medicine categories all to show up in the "hover" function. I realized that it was because I only included the default variables from the professor, which were "key" and "ref". Then I forgot to add the "@" sign to the beginning of item, further frustrating me until I re-read the document again and noticed the discrepency with the original examples. My brother also talked with my on the phone, guiding me towards areas the mistakes might be in. 
 *This was a good reminder (as I had previously) of the importance in digital reseach of making sure every note, command, and word was spelled correctly. Computers are not like humans and they cannot yet anticipate, infer, or change what we add with accuracy. Of course, the legal and ethical ramifications that would arise if they were able to change what we wrote can speak to issues such as programming bias, transparency, accuracy in making complex, multifaceted decisions, and so on**
@@ -410,13 +535,13 @@ I think the biggest thing that was difficult about this last step was that becau
 
 **Post as blog posts by day, broken up into topics on Reclaim - make sure to mention that I created an ititial document and then decided to post it all on the blogs - and the reasons why**
 
-#August 17, 2017
-#Next steps - getting it ready for presentation
+###August 17, 2017
+Next steps - getting it ready for presentation
 I have finished the encoding, so I am going to see what I can do with the data and if I can find the answers to the questions I have posed below. I will also start formatting these notes and put them out there in my blog.
 
 Ideally, I would like to map people's names and compare the frequency of "important" vs "regular" people. I also want to see which towns are mentioned most frequently and what type of food is mentioned most.
 
-#Voyant
+#####Voyant
 I started with Cirrus, the word cloud display. This will provide a visual representation of what words the program counts as the most frequently included within the text. Unfortunately, the downside is that because of the poorly-done OCR, this word cloud is not entirely accurate and this needs to be mentioned. Failing to mention this could influence the way researchers approach this tool and lead them to draw wrong conclusions. For example, the auto-generated word cloud identified "Mr" as the largest cluster of words. This may indicate that many people are referred to throughout the document in the formal sense, as in "Mr. Ayer". However, it does not provide context in this type of general distant reading. This becomes especially problematic when considering the word "time". Time in what context? By itself, the term is not useful. 
 Either way, the top key words include: Mr, new, old, time, years, house, men, coun, shawville, John, law, business, and January. 
 Taken critically and within the context of a paper written shortly after the start of the new year and largely focusing on recent municipal elections, the results make sense. Elected officials are referred to formally and respectfully. References to "new" include "New" York, "New" Years, new councillors and new buildings/work. Interestingly enough, the name "John" is 7th among the top 25 most frequent words. This means that either the same person is being referred to multiple times, or there are many different people named John. In examining the phrases in which the term occurs, it appears that both are the case. Without doing outside research, it is difficult to know if the name John was popular in the Shawville region during this time, if it was popular among the English-speaking elites, or if some other factor is at play. 
@@ -428,20 +553,20 @@ In terms of the tags I encoded for, I was happy to see that names of towns featu
 
 I clicked on the Links tab (a different tool). It appears to map connections between words based on their frequency. I started playing with the slider in terms of how many words are included in the context, and it took what made sense (a collection of connected but easy to read words) and replaced it with hundreds of words and their connections. 
 
-#Fail-log
+####Fail-log
 When I moved the slider in Links to 15 from 30, it looked to actually increase the number of words that were being connected. I pressed clear to hopefully reset it to the way it originally was, and it reduced the word to one. I had to re-upload the file and then work on the Links tools. I set it for 15 links, which was in the middle of the options and seemed like a good number. This generated a web of connected words. 
 
-#Links
+#####Links
 This was a different view from the previous visualization because it did not just present the most frequently used words, but searched out how they were connected. This type of visualization is useful in helping the reader or researcher see context and begin to look at alternative ways of broadening a search query. For example, "John" is now connected to "mother". If we continued to trace either John or mother, we could potentially see what John does or why he is mentioned so many times and take a deeper reading to figure out how he connects to mother. Similarly, if our focus was on mother, we could explore how she is related to John and start to ask broader questions. In this case, we could ask why the mother is referred to as John's mother as her identifier, asking questions about identity, gender, power, representation, and the role of newspapers/the printed word in perpetuating or addressing these issues. If we were looking at a huge collection of texts instead of one, we could do like [Michelle Moravec](http://historyinthecity.blogspot.ca/2013/12/corpus-linguistics-for-historians.html) does on her analysis of feminism and its representation through topic modeling, and do a deeper analysis. 
 Cautions to consider with this type of analysis include the possibility of program errors in connecting of words, and in the case of this data in particular, the concern about poorly OCRd text and missed or unrecognizable words. In order for this chart to be more than merely illustrative, it would have to be used critically and the researcher would have to have taken high levels of care and effort in cleaning up the data for more rigorous scholarly use. 
 
-#Terms and CSV file
+#####Terms and CSV file
 I then explored the Terms tool. This was a list of all the words and their frequencies. I selected all the terms that ocurred eight or more times. I chose this number because it was a number that reflected the lower end of the "frequent" word list and represented 136 individual terms. This number seemed to me to be enough to experiment with, but not too much to get bogged down with. 
 When I exported it as a text separated file (so I could turn it into a csv and use it later), it actually exported all 600 terms. *I may use them all, or I may edit the file down and use only the selection I original decided on.* I opened the file in my LibreOffice Calc program and saved it as a .csv file. Happily, it worked well and provided headings: Term, Count, Trend. The trend category will not be useful for my anticipated project, so in the working copy I save, I will not be including that column. I have also decided to only include the original 136 most frequent words.
 I would like to take this csv file and open it in OpenRefine.
 I loosely followed the [tutorial](http://workbook.craftingdigitalhistory.ca/supporting%20materials/open-refine/) and modified it for what I was looking for.
 
-#Fail-log
+####Fail-log
 I noticed right away that unlike the Texas correspondance files, they are already sorted into fairly simple and clean categories (key words). There were not really any "Johns" "Johnston" "Johston" to merge and rename. Once again, it doesn't really look like OpenRefine is the right tool for this project, no matter how much I seem to want to use it. 
 
 I tried the "text facet sort" on the file anyway and it found "friend" and "friends". I clicked that it should merge, but on second thought, realized that in the context of this newspaper, it might actually be unethical to do this. Unlike a series of correspondances where the names were almost certainly the same, the key words were not necessarily within the same context. "Friend" might be part of a sentence that said "John went to visit his dear friend last week", whereas "Friends" might refer to people in the more formal and impersonal voice: "at this grocery store, we treat all our customers as friends". I undid the merge and closed the file. Not sure if/how I will use it, but at least I learned how to get it into the format I wanted (finally) and got am learning more about what the program can/can't do.
@@ -449,8 +574,8 @@ I tried the "text facet sort" on the file anyway and it found "friend" and "frie
 
 Upon closer examination of the class coursebook, it looks like I was confusing to some extent OpenRefine with Gephi. Gephi is the net-work analysis tool and I would like to use it to continue my exploration of words and how they are connected re: the questions I am asking. I may also look briefly at topic modelling to see if the computer program (don't remember which one) makes the same connections between words as the "Links" and my own analysis does. 
 
-#August 18, 2017
-#Catmandu, regex, python
+###August 18, 2017
+Catmandu, regex, python
 Following advice from the professor, I took a look at his advice from [link](https://hist3814o.slack.com/archives/C0GDSE1B8/p1503065858000029) and worked to install Catmandu. This took some time because the file was large and everything downloaded individually. I asked my brother to look at the tutorial with me because I was unfamiliar with the new program. The tutorial is found [here](https://librecatproject.wordpress.com/2014/12/04/day-4-grep-less-and-wc/amp/)
 
 We decided after some exploration that we would prefer to not only count the number of tags each word totaled to, but to sort the place names and determine their relationship to each other. We abandoned Catmandu and began to work with regex and python.
@@ -460,7 +585,7 @@ The plan was the create a regex searching for the <placeName> tag, including up 
 I wrote a regex that I thought would do this 
 ("<placeName" + ">)
 
-#Fail-log
+####Fail-log
 I was right about the beginning section of the regex and the later need for the "+" to grab additional information. I was not precise enough and while I remembered some of the conventions about writing the expression, I forgot others, such as the "\" and the strategic use of brackets. 
 My brother modified my expression so that it continued until the "ref" at the end. <placeName key=\"(.+)\" ref "> - inserted to close the tag and prevent the rest of the text from changing colour" This correctly identified the place names, but the "ref" it was picking up was not always the one it started with, especially when the place names occured on the same line **insert screenshot**
 
@@ -481,8 +606,8 @@ Theoretically, if it did, it would search for all place names that were in tags,
 3. Finalize presentation of the data
 4. Ensure it meets final project guidelines
 
-#August 19, 2017
-#Writing blog posts, thinking everything through
+###August 19, 2017
+Writing blog posts, thinking everything through
 I spent much of the day taking these notes and using them to form blog posts going back to the start of the project. They can be found [here](http://claremaier.ca/final-equity/august-18-a-series-of-errors-and-a-helpful-friend/)
 I did my best to make it user friendly and interesting for the audience, who I envisioned to be students like me (new to digital history) or people from the Shawville area who stumbled across the site somehow through Google. I wrote in a narrative, first person style, describing my motivations, steps, failures, and successes. I also included links that I found helpful and visualisations of the work as appropriate. 
 
@@ -497,5 +622,14 @@ I did my best to make it user friendly and interesting for the audience, who I e
 
 **Are some items sold more than others? What and why?**
 
+#Sustainability and Access
+This project and its results will remain sustainable as they will continue to be available on free, reputable, and open source sites hosted on the internet. I have written all my notes associated with this project in accessible and sustainable formats (.txt, .md, .xsl, .xml) that can be opened and used by all computers and internet enabled machines.
+I have made careful notes and provided internal thoughts and commentary alongside the process, failures, and project results in the hopes that my project is clear and replicable by both professional digitl historians and beginners like myself. 
+The project results will also be sustainable because they are being archived by the professor as part of his marking process and because I found the class-provided DH Box so complicated and not at all user-friendly, the materials are also on my personal computer and safely stored on my publically-accessible github account. I will provide a link to my domain and github account below. 
+My work also contributes to long-term accessibility of the *Equity* papers because the file itself is saved in many formats within my computer and github account. In addition, My documentation and blog posts should sufficiently describe my process with reference to the files so that the conclusions I have drawn about the Shawville region are applicable and understandable should the original edition of the January 14, 1897 *Shawville Equity* be destroyed. 
 
+Reclaim hosting (domain name Clare Maier): https://cpanel.outofstep.reclaimhosting.com/cpsess2656399109/3rdparty/installatron/index.cgi?login=1&post_login=28410085606181#/installs
 
+Github: https://github.com/claremaier/Final_Project
+
+Blog: http://claremaier.ca/
